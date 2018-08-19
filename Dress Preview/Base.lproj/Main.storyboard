@@ -19,9 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-oQ-VXt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-oQ-VXt">
                                 <rect key="frame" x="16" y="91" width="167" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Browse">
                                         <attributes>
@@ -31,20 +30,18 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-nn-2Y9">
+                            <tabBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-nn-2Y9">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem title="Browse" id="8rv-bP-qg2"/>
-                                    <tabBarItem title="Favourites" id="Rr5-33-dOl"/>
+                                    <tabBarItem systemItem="favorites" id="Rr5-33-dOl"/>
                                     <tabBarItem title="Preview" id="dNO-fa-8VA"/>
                                     <tabBarItem title="Settings" id="kXI-No-qgF"/>
                                 </items>
                             </tabBar>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-Dc-64G">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-Dc-64G">
                                 <rect key="frame" x="0.0" y="132" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-QZ-6Lb">
@@ -64,11 +61,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="LBT-oQ-VXt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="03O-yX-OyW"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="width" secondItem="UV6-7V-DDP" secondAttribute="width" id="1jx-ce-2rZ"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="width" secondItem="UV6-7V-DDP" secondAttribute="height" multiplier="85:128" id="37T-8X-OfH"/>
+                            <constraint firstItem="LBT-oQ-VXt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="71" id="4Aq-n0-nd9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Vlc-Dc-64G" secondAttribute="bottom" constant="479" id="5L3-Xe-k15"/>
+                            <constraint firstItem="UV6-7V-DDP" firstAttribute="width" secondItem="XGc-bV-DmT" secondAttribute="width" id="5bI-LM-FoA"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="height" secondItem="UV6-7V-DDP" secondAttribute="height" id="9Uc-M9-IyN"/>
                             <constraint firstItem="UV6-7V-DDP" firstAttribute="width" secondItem="XGc-bV-DmT" secondAttribute="height" multiplier="74:101" id="9uG-4f-Q1S"/>
+                            <constraint firstItem="UV6-7V-DDP" firstAttribute="height" secondItem="XGc-bV-DmT" secondAttribute="height" id="F91-Ck-gJV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LBT-oQ-VXt" secondAttribute="trailing" constant="192" id="YXF-MR-v1a"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="height" secondItem="UV6-7V-DDP" secondAttribute="height" id="c1M-xO-HpP"/>
+                            <constraint firstItem="Vlc-Dc-64G" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dSO-hv-KFT"/>
+                            <constraint firstItem="jWi-nn-2Y9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="598" id="exY-dQ-sCs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vlc-Dc-64G" secondAttribute="trailing" id="iec-qO-OlB"/>
+                            <constraint firstItem="Vlc-Dc-64G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="112" id="lTK-bI-BTt"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="centerY" secondItem="UV6-7V-DDP" secondAttribute="centerY" id="mtY-cN-BLa"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="width" secondItem="UV6-7V-DDP" secondAttribute="width" id="ocW-wN-Ha2"/>
                         </constraints>
@@ -78,6 +85,116 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Nmm-HA-8o2">
+            <objects>
+                <viewController id="fZd-RH-fz2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jjl-eW-brK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2m-4e-fo5">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Browse" id="79h-Pr-Wxf"/>
+                                    <tabBarItem systemItem="favorites" id="AkM-HN-71p"/>
+                                    <tabBarItem title="Preview" id="kUG-Uu-Uwh"/>
+                                    <tabBarItem title="Settings" id="XQs-VM-Oax"/>
+                                </items>
+                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-D0-jv4">
+                                <rect key="frame" x="16" y="90" width="167" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Favorites">
+                                        <attributes>
+                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Jao-ra-0se">
+                                <rect key="frame" x="0.0" y="131" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-j4-cfO">
+                                <rect key="frame" x="122" y="54" width="131" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Tops"/>
+                                    <segment title="Bottoms"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6tC-UO-ddL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6er-ir-8SA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="34"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="klG-E8-oXL">
+            <objects>
+                <viewController id="0vA-ST-Pnl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a6Q-oh-GeI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhm-Nz-K4V">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Browse" id="4H3-Xf-mIy"/>
+                                    <tabBarItem systemItem="favorites" id="ILO-oY-icR"/>
+                                    <tabBarItem title="Preview" id="7b6-Lm-deo"/>
+                                    <tabBarItem title="Settings" id="Y6d-IZ-L22"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="PwX-eO-gyh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1qe-pG-WGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="707"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MoX-Tu-hse">
+            <objects>
+                <viewController id="vCj-P0-IOt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bd8-Xf-N06">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-e9-fbv">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Browse" id="nmz-Nt-Iim"/>
+                                    <tabBarItem systemItem="favorites" id="ULa-nk-5eH"/>
+                                    <tabBarItem title="Preview" id="Fh2-YE-rjM"/>
+                                    <tabBarItem title="Settings" id="SGY-c3-O13"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DPm-Dd-80i"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YO9-oa-MDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="34"/>
         </scene>
     </scenes>
     <resources>
