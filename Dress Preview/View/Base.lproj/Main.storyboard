@@ -34,10 +34,10 @@
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="Browse" id="8rv-bP-qg2"/>
+                                    <tabBarItem title="Browse" image="search" id="8rv-bP-qg2"/>
                                     <tabBarItem systemItem="favorites" id="Rr5-33-dOl"/>
-                                    <tabBarItem title="Preview" id="dNO-fa-8VA"/>
-                                    <tabBarItem title="Settings" id="kXI-No-qgF"/>
+                                    <tabBarItem title="Preview" image="visible" id="dNO-fa-8VA"/>
+                                    <tabBarItem title="Settings" image="settings" id="kXI-No-qgF"/>
                                 </items>
                             </tabBar>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-Dc-64G">
@@ -58,6 +58,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Capture d’écran 2018-07-30 à 14.20.41" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-7V-DDP">
                                 <rect key="frame" x="16" y="188" width="167" height="202"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Adidas t-shirt" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pUW-bV-J4H">
+                                <rect key="frame" x="43" y="398" width="113" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -70,10 +77,12 @@
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="height" secondItem="UV6-7V-DDP" secondAttribute="height" id="9Uc-M9-IyN"/>
                             <constraint firstItem="UV6-7V-DDP" firstAttribute="width" secondItem="XGc-bV-DmT" secondAttribute="height" multiplier="74:101" id="9uG-4f-Q1S"/>
                             <constraint firstItem="UV6-7V-DDP" firstAttribute="height" secondItem="XGc-bV-DmT" secondAttribute="height" id="F91-Ck-gJV"/>
+                            <constraint firstItem="jWi-nn-2Y9" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Pnx-QB-256"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LBT-oQ-VXt" secondAttribute="trailing" constant="192" id="YXF-MR-v1a"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="height" secondItem="UV6-7V-DDP" secondAttribute="height" id="c1M-xO-HpP"/>
                             <constraint firstItem="Vlc-Dc-64G" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dSO-hv-KFT"/>
                             <constraint firstItem="jWi-nn-2Y9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="598" id="exY-dQ-sCs"/>
+                            <constraint firstItem="jWi-nn-2Y9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hKV-UW-RPZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vlc-Dc-64G" secondAttribute="trailing" id="iec-qO-OlB"/>
                             <constraint firstItem="Vlc-Dc-64G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="112" id="lTK-bI-BTt"/>
                             <constraint firstItem="XGc-bV-DmT" firstAttribute="centerY" secondItem="UV6-7V-DDP" secondAttribute="centerY" id="mtY-cN-BLa"/>
@@ -94,17 +103,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2m-4e-fo5">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Browse" id="79h-Pr-Wxf"/>
-                                    <tabBarItem systemItem="favorites" id="AkM-HN-71p"/>
-                                    <tabBarItem title="Preview" id="kUG-Uu-Uwh"/>
-                                    <tabBarItem title="Settings" id="XQs-VM-Oax"/>
-                                </items>
-                            </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-D0-jv4">
                                 <rect key="frame" x="16" y="90" width="167" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,6 +129,17 @@
                                     <segment title="Bottoms"/>
                                 </segments>
                             </segmentedControl>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YRt-wb-2nh">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Browse" image="search" id="aq3-IE-7Wl"/>
+                                    <tabBarItem systemItem="favorites" id="G20-Ny-maS"/>
+                                    <tabBarItem title="Preview" image="visible" id="2AX-Hf-Elq"/>
+                                    <tabBarItem title="Settings" image="settings" id="DKa-yf-zpY"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6tC-UO-ddL"/>
@@ -148,15 +157,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhm-Nz-K4V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzW-4G-Bns">
+                                <rect key="frame" x="16" y="106" width="174" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Preferences">
+                                        <attributes>
+                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oDC-gw-3o5">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="Browse" id="4H3-Xf-mIy"/>
-                                    <tabBarItem systemItem="favorites" id="ILO-oY-icR"/>
-                                    <tabBarItem title="Preview" id="7b6-Lm-deo"/>
-                                    <tabBarItem title="Settings" id="Y6d-IZ-L22"/>
+                                    <tabBarItem title="Browse" image="search" id="Wzr-8V-54e"/>
+                                    <tabBarItem systemItem="favorites" id="E6x-md-Y3d"/>
+                                    <tabBarItem title="Preview" image="visible" id="Ywr-9v-SpO"/>
+                                    <tabBarItem title="Settings" image="settings" id="UV9-na-A2m"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -176,15 +198,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GhB-e9-fbv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQe-BY-RFi">
+                                <rect key="frame" x="13" y="90" width="115" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Preview">
+                                        <attributes>
+                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sB-AL-65T">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="Browse" id="nmz-Nt-Iim"/>
-                                    <tabBarItem systemItem="favorites" id="ULa-nk-5eH"/>
-                                    <tabBarItem title="Preview" id="Fh2-YE-rjM"/>
-                                    <tabBarItem title="Settings" id="SGY-c3-O13"/>
+                                    <tabBarItem title="Browse" image="search" id="YRc-Y5-sGz"/>
+                                    <tabBarItem systemItem="favorites" id="7pH-A6-CcK"/>
+                                    <tabBarItem title="Preview" image="visible" id="1ke-t8-J9E"/>
+                                    <tabBarItem title="Settings" image="settings" id="ODI-F9-RAR"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -200,5 +235,8 @@
     <resources>
         <image name="Capture d’écran 2018-07-30 à 14.20.41" width="193" height="240"/>
         <image name="Capture d’écran 2018-07-30 à 15.08.47" width="98" height="152"/>
+        <image name="search" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
+        <image name="visible" width="30" height="30"/>
     </resources>
 </document>
