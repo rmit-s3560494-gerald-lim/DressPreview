@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ywP-IK-0Kq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Browse-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dress_Preview" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Browse" id="BYZ-38-t0r" customClass="ViewController" customModule="Dress_Preview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-oQ-VXt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-oQ-VXt">
                                 <rect key="frame" x="16" y="91" width="167" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Browse">
                                         <attributes>
@@ -30,18 +30,9 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWi-nn-2Y9">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Browse" image="search" id="8rv-bP-qg2"/>
-                                    <tabBarItem systemItem="favorites" id="Rr5-33-dOl"/>
-                                    <tabBarItem title="Preview" image="visible" id="dNO-fa-8VA"/>
-                                    <tabBarItem title="Settings" image="settings" id="kXI-No-qgF"/>
-                                </items>
-                            </tabBar>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-Dc-64G">
-                                <rect key="frame" x="0.0" y="132" width="375" height="56"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-Dc-64G">
+                                <rect key="frame" x="0.0" y="132" width="375" height="7"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-QZ-6Lb">
@@ -52,11 +43,13 @@
                                     <segment title="Bottoms"/>
                                 </segments>
                             </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Capture d’écran 2018-07-30 à 15.08.47" translatesAutoresizingMaskIntoConstraints="NO" id="XGc-bV-DmT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Capture d’écran 2018-07-30 à 15.08.47" translatesAutoresizingMaskIntoConstraints="NO" id="XGc-bV-DmT">
                                 <rect key="frame" x="196" y="188" width="163" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Capture d’écran 2018-07-30 à 14.20.41" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-7V-DDP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Capture d’écran 2018-07-30 à 14.20.41" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-7V-DDP">
                                 <rect key="frame" x="16" y="188" width="167" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Adidas t-shirt" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pUW-bV-J4H">
                                 <rect key="frame" x="43" y="398" width="113" height="61"/>
@@ -67,38 +60,18 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="LBT-oQ-VXt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="03O-yX-OyW"/>
-                            <constraint firstItem="XGc-bV-DmT" firstAttribute="width" secondItem="UV6-7V-DDP" secondAttribute="width" id="1jx-ce-2rZ"/>
-                            <constraint firstItem="XGc-bV-DmT" firstAttribute="width" secondItem="UV6-7V-DDP" secondAttribute="height" multiplier="85:128" id="37T-8X-OfH"/>
-                            <constraint firstItem="LBT-oQ-VXt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="71" id="4Aq-n0-nd9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Vlc-Dc-64G" secondAttribute="bottom" constant="479" id="5L3-Xe-k15"/>
-                            <constraint firstItem="UV6-7V-DDP" firstAttribute="width" secondItem="XGc-bV-DmT" secondAttribute="width" id="5bI-LM-FoA"/>
-                            <constraint firstItem="XGc-bV-DmT" firstAttribute="height" secondItem="UV6-7V-DDP" secondAttribute="height" id="9Uc-M9-IyN"/>
-                            <constraint firstItem="UV6-7V-DDP" firstAttribute="width" secondItem="XGc-bV-DmT" secondAttribute="height" multiplier="74:101" id="9uG-4f-Q1S"/>
-                            <constraint firstItem="UV6-7V-DDP" firstAttribute="height" secondItem="XGc-bV-DmT" secondAttribute="height" id="F91-Ck-gJV"/>
-                            <constraint firstItem="jWi-nn-2Y9" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Pnx-QB-256"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LBT-oQ-VXt" secondAttribute="trailing" constant="192" id="YXF-MR-v1a"/>
-                            <constraint firstItem="XGc-bV-DmT" firstAttribute="height" secondItem="UV6-7V-DDP" secondAttribute="height" id="c1M-xO-HpP"/>
-                            <constraint firstItem="Vlc-Dc-64G" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dSO-hv-KFT"/>
-                            <constraint firstItem="jWi-nn-2Y9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="598" id="exY-dQ-sCs"/>
-                            <constraint firstItem="jWi-nn-2Y9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hKV-UW-RPZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vlc-Dc-64G" secondAttribute="trailing" id="iec-qO-OlB"/>
-                            <constraint firstItem="Vlc-Dc-64G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="112" id="lTK-bI-BTt"/>
-                            <constraint firstItem="XGc-bV-DmT" firstAttribute="centerY" secondItem="UV6-7V-DDP" secondAttribute="centerY" id="mtY-cN-BLa"/>
-                            <constraint firstItem="XGc-bV-DmT" firstAttribute="width" secondItem="UV6-7V-DDP" secondAttribute="width" id="ocW-wN-Ha2"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="search" id="COw-Ta-zOZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
+            <point key="canvasLocation" x="887" y="179"/>
         </scene>
-        <!--View Controller-->
+        <!--Favourites-->
         <scene sceneID="Nmm-HA-8o2">
             <objects>
-                <viewController id="fZd-RH-fz2" sceneMemberID="viewController">
+                <viewController title="Favourites" id="fZd-RH-fz2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jjl-eW-brK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,30 +102,20 @@
                                     <segment title="Bottoms"/>
                                 </segments>
                             </segmentedControl>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YRt-wb-2nh">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Browse" image="search" id="aq3-IE-7Wl"/>
-                                    <tabBarItem systemItem="favorites" id="G20-Ny-maS"/>
-                                    <tabBarItem title="Preview" image="visible" id="2AX-Hf-Elq"/>
-                                    <tabBarItem title="Settings" image="settings" id="DKa-yf-zpY"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6tC-UO-ddL"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="I4z-22-dd6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6er-ir-8SA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711" y="34"/>
+            <point key="canvasLocation" x="1876" y="954"/>
         </scene>
-        <!--View Controller-->
+        <!--Preferences-->
         <scene sceneID="klG-E8-oXL">
             <objects>
-                <viewController id="0vA-ST-Pnl" sceneMemberID="viewController">
+                <viewController title="Preferences" id="0vA-ST-Pnl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a6Q-oh-GeI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,30 +133,20 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oDC-gw-3o5">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Browse" image="search" id="Wzr-8V-54e"/>
-                                    <tabBarItem systemItem="favorites" id="E6x-md-Y3d"/>
-                                    <tabBarItem title="Preview" image="visible" id="Ywr-9v-SpO"/>
-                                    <tabBarItem title="Settings" image="settings" id="UV9-na-A2m"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PwX-eO-gyh"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="settings" id="xgZ-c3-iS9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qe-pG-WGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="707"/>
+            <point key="canvasLocation" x="1177" y="954"/>
         </scene>
-        <!--View Controller-->
+        <!--Preview-->
         <scene sceneID="MoX-Tu-hse">
             <objects>
-                <viewController id="vCj-P0-IOt" sceneMemberID="viewController">
+                <viewController title="Preview" id="vCj-P0-IOt" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bd8-Xf-N06">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,25 +164,35 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sB-AL-65T">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Browse" image="search" id="YRc-Y5-sGz"/>
-                                    <tabBarItem systemItem="favorites" id="7pH-A6-CcK"/>
-                                    <tabBarItem title="Preview" image="visible" id="1ke-t8-J9E"/>
-                                    <tabBarItem title="Settings" image="settings" id="ODI-F9-RAR"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DPm-Dd-80i"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="visible" id="3IE-4R-f4D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO9-oa-MDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="34"/>
+            <point key="canvasLocation" x="2586" y="954"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3AL-tR-mer">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ywP-IK-0Kq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AHG-9o-1wM">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="EUw-Gb-Raa"/>
+                        <segue destination="fZd-RH-fz2" kind="relationship" relationship="viewControllers" id="KNI-qv-elZ"/>
+                        <segue destination="vCj-P0-IOt" kind="relationship" relationship="viewControllers" id="4RH-fT-a4O"/>
+                        <segue destination="0vA-ST-Pnl" kind="relationship" relationship="viewControllers" id="RsV-B4-21F"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0G0-NI-5a5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2367" y="-277"/>
         </scene>
     </scenes>
     <resources>
