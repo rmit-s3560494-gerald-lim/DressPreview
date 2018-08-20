@@ -30,11 +30,6 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Vlc-Dc-64G">
-                                <rect key="frame" x="0.0" y="132" width="375" height="7"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-QZ-6Lb">
                                 <rect key="frame" x="122" y="55" width="131" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,6 +53,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="TMo-D4-jMr">
+                                <rect key="frame" x="0.0" y="132" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -121,10 +121,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzW-4G-Bns">
-                                <rect key="frame" x="16" y="106" width="174" height="41"/>
+                                <rect key="frame" x="16" y="92" width="121" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Preferences">
+                                    <fragment content="Settings">
                                         <attributes>
                                             <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -137,7 +137,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PwX-eO-gyh"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="settings" id="xgZ-c3-iS9"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xgZ-c3-iS9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qe-pG-WGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +168,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DPm-Dd-80i"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="visible" id="3IE-4R-f4D"/>
+                    <tabBarItem key="tabBarItem" title="Preview" image="visible" id="3IE-4R-f4D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO9-oa-MDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,6 +180,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ywP-IK-0Kq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AHG-9o-1wM">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
