@@ -41,11 +41,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Capture d’écran 2018-07-30 à 15.08.47" translatesAutoresizingMaskIntoConstraints="NO" id="XGc-bV-DmT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nike" translatesAutoresizingMaskIntoConstraints="NO" id="XGc-bV-DmT">
                                 <rect key="frame" x="215" y="117" width="144" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Capture d’écran 2018-07-30 à 14.20.41" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-7V-DDP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="adidas" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-7V-DDP">
                                 <rect key="frame" x="16" y="117" width="140" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -247,10 +247,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Capture d’écran 2018-07-30 à 14.20.41" width="193" height="240"/>
-        <image name="Capture d’écran 2018-07-30 à 15.08.47" width="98" height="152"/>
         <image name="Line" width="343" height="2"/>
         <image name="Upload Image" width="168" height="168"/>
+        <image name="adidas" width="746" height="928"/>
+        <image name="nike" width="628" height="980"/>
         <image name="search" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
         <image name="visible" width="30" height="30"/>
