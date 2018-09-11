@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ywP-IK-0Kq">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,63 +15,61 @@
             <objects>
                 <viewController title="Browse" id="BYZ-38-t0r" customClass="ViewController" customModule="Dress_Preview" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBT-oQ-VXt">
-                                <rect key="frame" x="16" y="20" width="108.5" height="41"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Browse">
-                                        <attributes>
-                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="TMo-D4-jMr">
+                                <rect key="frame" x="0.0" y="116" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXO-co-0bd">
+                                <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                                <items>
+                                    <navigationItem title="Browse" largeTitleDisplayMode="always" id="2UK-kz-eJq"/>
+                                </items>
+                            </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-QZ-6Lb">
-                                <rect key="frame" x="228" y="26" width="131" height="29"/>
+                                <rect key="frame" x="141.66666666666666" y="20" width="130.99999999999997" height="29"/>
                                 <segments>
                                     <segment title="Tops"/>
                                     <segment title="Bottoms"/>
                                 </segments>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="TMo-D4-jMr">
-                                <rect key="frame" x="0.0" y="61" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nike" translatesAutoresizingMaskIntoConstraints="NO" id="XGc-bV-DmT">
-                                <rect key="frame" x="215" y="117" width="144" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="adidas" translatesAutoresizingMaskIntoConstraints="NO" id="UV6-7V-DDP">
-                                <rect key="frame" x="16" y="117" width="140" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Adidas t-shirt" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pUW-bV-J4H">
-                                <rect key="frame" x="30" y="290" width="113" height="61"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AyB-uw-B5d">
+                                <rect key="frame" x="20" y="172" width="374" height="515"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Nike t-shirt" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YLP-at-wBx">
-                                <rect key="frame" x="231" y="290" width="113" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9y9-hn-9x0">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="01Y-F7-jeh">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="2vO-gk-tSH"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LBT-oQ-VXt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4JM-Od-g9g"/>
-                            <constraint firstItem="Csg-QZ-6Lb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="228" id="Wr8-2G-Clr"/>
-                            <constraint firstItem="Csg-QZ-6Lb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="ctR-CQ-cqT"/>
-                            <constraint firstItem="LBT-oQ-VXt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gcO-Ul-CTt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LBT-oQ-VXt" secondAttribute="trailing" constant="250.5" id="rWL-rk-72F"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Csg-QZ-6Lb" secondAttribute="trailing" constant="16" id="rsP-Op-4mq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bXO-co-0bd" secondAttribute="trailing" id="5ki-To-GBd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TMo-D4-jMr" secondAttribute="trailing" id="8Cw-mE-QYM"/>
+                            <constraint firstItem="TMo-D4-jMr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="A05-Yw-bmg"/>
+                            <constraint firstItem="Csg-QZ-6Lb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MwP-Wb-nsS"/>
+                            <constraint firstItem="Csg-QZ-6Lb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lSe-Rw-YYj"/>
+                            <constraint firstItem="bXO-co-0bd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pYx-H9-XbA"/>
+                            <constraint firstItem="bXO-co-0bd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tf3-Me-ghJ"/>
+                            <constraint firstItem="TMo-D4-jMr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="z8j-OW-eP6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -79,37 +77,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="885.60000000000002" y="178.56071964017991"/>
+            <point key="canvasLocation" x="88.405797101449281" y="910.59782608695662"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="Nmm-HA-8o2">
             <objects>
                 <viewController title="Favourites" id="fZd-RH-fz2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jjl-eW-brK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6b-D0-jv4">
-                                <rect key="frame" x="16" y="20" width="167" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Favorites">
-                                        <attributes>
-                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Jao-ra-0se">
-                                <rect key="frame" x="0.0" y="61" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="otK-hI-gk9">
+                                <rect key="frame" x="0.0" y="116" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-j4-cfO">
-                                <rect key="frame" x="228" y="26" width="131" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKA-bd-lrA">
+                                <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                                <items>
+                                    <navigationItem title="Favourites" largeTitleDisplayMode="always" id="nxR-iz-IRi"/>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ewF-PX-cQm">
+                                <rect key="frame" x="141.66666666666666" y="20" width="130.99999999999997" height="29"/>
                                 <segments>
                                     <segment title="Tops"/>
                                     <segment title="Bottoms"/>
@@ -117,67 +106,70 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6tC-UO-ddL" firstAttribute="trailing" secondItem="otK-hI-gk9" secondAttribute="trailing" id="2jn-6o-dHV"/>
+                            <constraint firstItem="ewF-PX-cQm" firstAttribute="centerX" secondItem="6tC-UO-ddL" secondAttribute="centerX" id="98q-wK-Dfa"/>
+                            <constraint firstItem="UKA-bd-lrA" firstAttribute="top" secondItem="6tC-UO-ddL" secondAttribute="top" id="MpM-AR-vYL"/>
+                            <constraint firstItem="ewF-PX-cQm" firstAttribute="top" secondItem="6tC-UO-ddL" secondAttribute="top" id="Xgx-KG-t0u"/>
+                            <constraint firstItem="otK-hI-gk9" firstAttribute="top" secondItem="6tC-UO-ddL" secondAttribute="top" constant="96" id="aHg-27-fnE"/>
+                            <constraint firstItem="otK-hI-gk9" firstAttribute="leading" secondItem="6tC-UO-ddL" secondAttribute="leading" id="gG5-3K-vI8"/>
+                            <constraint firstItem="UKA-bd-lrA" firstAttribute="leading" secondItem="6tC-UO-ddL" secondAttribute="leading" id="qKy-Tn-tVE"/>
+                            <constraint firstItem="6tC-UO-ddL" firstAttribute="trailing" secondItem="UKA-bd-lrA" secondAttribute="trailing" id="zlR-Kv-I0t"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6tC-UO-ddL"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="I4z-22-dd6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6er-ir-8SA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="856"/>
+            <point key="canvasLocation" x="1038" y="910"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="klG-E8-oXL">
             <objects>
                 <viewController title="Preferences" id="0vA-ST-Pnl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a6Q-oh-GeI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzW-4G-Bns">
-                                <rect key="frame" x="16" y="20" width="121" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Settings">
-                                        <attributes>
-                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IE6-eX-OnU">
+                                <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                                <items>
+                                    <navigationItem title="Settings" largeTitleDisplayMode="always" id="Qrh-Ts-Rho"/>
+                                </items>
+                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Upload Image" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-my-CoU">
-                                <rect key="frame" x="122" y="69" width="130" height="128"/>
+                                <rect key="frame" x="122" y="165" width="130" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="PSA-MK-sxW">
-                                <rect key="frame" x="16" y="342" width="343" height="2"/>
+                                <rect key="frame" x="16" y="438" width="343" height="2"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="zi3-Oa-bmG">
-                                <rect key="frame" x="16" y="243" width="343" height="2"/>
+                                <rect key="frame" x="16" y="339" width="343" height="2"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="iVT-su-J8q">
-                                <rect key="frame" x="16" y="291" width="343" height="2"/>
+                                <rect key="frame" x="16" y="387" width="343" height="2"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-Aw-S4d">
-                                <rect key="frame" x="16" y="205" width="343" height="30"/>
+                                <rect key="frame" x="16" y="301" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Male" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eSJ-Wn-hYD">
-                                <rect key="frame" x="16" y="253" width="343" height="33"/>
+                                <rect key="frame" x="16" y="349" width="343" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Size: L" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bas-76-JFi">
-                                <rect key="frame" x="16" y="301" width="343" height="33"/>
+                                <rect key="frame" x="16" y="397" width="343" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -185,44 +177,47 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IE6-eX-OnU" firstAttribute="leading" secondItem="PwX-eO-gyh" secondAttribute="leading" id="8pE-Qk-Ehr"/>
+                            <constraint firstItem="IE6-eX-OnU" firstAttribute="top" secondItem="PwX-eO-gyh" secondAttribute="top" id="HoL-7Q-IXZ"/>
+                            <constraint firstItem="PwX-eO-gyh" firstAttribute="trailing" secondItem="IE6-eX-OnU" secondAttribute="trailing" id="lLd-3j-9Y7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PwX-eO-gyh"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="xgZ-c3-iS9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qe-pG-WGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2557.5999999999999" y="855.9220389805098"/>
+            <point key="canvasLocation" x="2831" y="910"/>
         </scene>
         <!--Preview-->
         <scene sceneID="MoX-Tu-hse">
             <objects>
                 <viewController title="Preview" id="vCj-P0-IOt" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bd8-Xf-N06">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQe-BY-RFi">
-                                <rect key="frame" x="16" y="20" width="115" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Preview">
-                                        <attributes>
-                                            <font key="NSFont" size="34" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EuG-KB-Jfr">
+                                <rect key="frame" x="0.0" y="20" width="414" height="96"/>
+                                <items>
+                                    <navigationItem title="Preview" largeTitleDisplayMode="always" id="fVM-wi-iDR"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EuG-KB-Jfr" firstAttribute="top" secondItem="DPm-Dd-80i" secondAttribute="top" id="MCA-UL-TWK"/>
+                            <constraint firstItem="EuG-KB-Jfr" firstAttribute="leading" secondItem="DPm-Dd-80i" secondAttribute="leading" id="McN-3v-Mb4"/>
+                            <constraint firstItem="DPm-Dd-80i" firstAttribute="trailing" secondItem="EuG-KB-Jfr" secondAttribute="trailing" id="js3-fy-jpY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DPm-Dd-80i"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preview" image="visible" id="3IE-4R-f4D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YO9-oa-MDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="856"/>
+            <point key="canvasLocation" x="1991" y="910"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3AL-tR-mer">
@@ -243,14 +238,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0G0-NI-5a5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2367" y="-277"/>
+            <point key="canvasLocation" x="1179" y="-319"/>
         </scene>
     </scenes>
     <resources>
         <image name="Line" width="343" height="2"/>
         <image name="Upload Image" width="168" height="168"/>
-        <image name="adidas" width="746" height="928"/>
-        <image name="nike" width="628" height="980"/>
         <image name="search" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
         <image name="visible" width="30" height="30"/>
