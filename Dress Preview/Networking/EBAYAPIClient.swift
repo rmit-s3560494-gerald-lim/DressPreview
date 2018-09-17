@@ -3,9 +3,13 @@ import Foundation
 /// Implementation of a generic-based Marvel API client
 public class EBAYAPIClient {
     private let oauthToken: String
+    var components = URLComponents()
+    let baseUrl = "api.ebay.com"
     
     init(token: String) {
         oauthToken = token
+        components.scheme = "https"
+        self.components.host = "\(baseUrl)"
     }
     
     public enum Result<Value> {
@@ -13,17 +17,14 @@ public class EBAYAPIClient {
         case failure(Error)
     }
     
-    func search(q: String?, completion: @escaping (_ result: Cloth) -> Void) {
-        let baseApiUrl = "https://api.ebay.com/buy/browse/v1/item_summary/"
-        let api = "search?"
-        let q = "q=\(q ?? "")&"
-        let category = "15687"
-        let uriC0 = "category_ids=\(category)"
-        let limitn = "10"
-        let uriC1 = "limit=\(limitn)"
-        let rek = "\(baseApiUrl)\(api)\(q)\(uriC0)&\(uriC1)"
+    func search(q: String?, category: String, limit: String?,  completion: @escaping (_ result: Cloth) -> Void) {
+        self.components.path = "/buy/browse/v1/item_summary/search"
+        let queryItemQ = URLQueryItem(name: "q", value: q)
+        let queryItemCategory = URLQueryItem(name: "category_ids", value: category)
+        let queryItemlimit = URLQueryItem(name: "limit", value: limit)
+        components.queryItems = [queryItemQ, queryItemCategory, queryItemlimit]
 
-        guard let url = URL(string: rek) else {
+        guard let url = components.url else {
             print("Error: cannot create URL")
                 return
         }
