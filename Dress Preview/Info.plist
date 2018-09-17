@@ -26,6 +26,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take profile pic</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Add photo to library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Access photo library to set profile pic</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
