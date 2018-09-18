@@ -13,8 +13,8 @@ class CollectionViewCell: UICollectionViewCell {
         
     @IBOutlet var clothImage: UIImageView!
     @IBOutlet var clothLabel: UILabel!
-    func displayContent(/*image: UIImage, */title: String/*, desc: String*/){
-        //clothImage.image = image
+    func displayContent(image: UIImage, title: String/*, desc: String*/){
+        clothImage.image = image
         clothLabel.text = title
         //clothDescription.text = desc
     }
