@@ -129,6 +129,10 @@ public class EBAYAPIClient {
                         let errors = try decoder.decode(APIErrors.self, from: jsonData)
                         completion(.failure(errors))
                     }
+                    if (cloths.total == 0) {
+                        completion(.failure("No results for this item."))
+                        return
+                    }
                     for i in (cloths.itemSummaries?.indices)! {
                         guard let url = URL(string: (cloths.itemSummaries![i].image?.imageURL)!) else {
                             return

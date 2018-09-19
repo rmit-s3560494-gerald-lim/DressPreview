@@ -63,10 +63,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 print("\(String(describing: er?.first?.longMessage!))")
                 print("try to get a new token")
                 print(apiClient.isTokenValid())
+                DispatchQueue.main.async {
+                    self.loadingIndicator.stopAnimating()
+                }
             case .success(_): break
                 
-            case .failure(_): break
-                
+            case .failure(let res as String):
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: res, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    self.loadingIndicator.stopAnimating()
+                }
+            case .failure(_):
+                break
             }
         }
     }
@@ -81,10 +91,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if (!self.apiClient.isTokenValid()) {
             try? apiClient.refreshToken() { response in
                 switch response {
-                case .success(let _ as OauthResponse):
+                case .success( _ as OauthResponse):
                     print("Token refreshed successfully")
                     self.apiSearch(self.apiClient, q: "adidas",limit: "10")
-                case .failure(let _ as OauthError):
+                case .failure( _ as OauthError):
                     print("Token failed to refresh")
                 case .success(_):
                     break
@@ -103,7 +113,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //MARK: search bar
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        apiSearch(apiClient, q: searchBar.text!, limit: "10")
+        let q = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (!(q?.isEmpty)!)
+        {
+            apiSearch(apiClient, q: searchBar.text!, limit: "10")
+        }
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
