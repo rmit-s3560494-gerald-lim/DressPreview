@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct Cloth: Codable {
     let href: String?
     let total: Int?
     let next: String?
     let limit, offset: Int?
-    let itemSummaries: [ItemSummary]?
+    var itemSummaries: [ItemSummary]?
 }
 
 struct ItemSummary: Codable {
@@ -35,6 +36,7 @@ struct ItemSummary: Codable {
     let categories: [Category]?
     let adultOnly: Bool?
     let additionalImages: [Image]?
+    var uimage: UIImage? = nil
     
     enum CodingKeys: String, CodingKey {
         case itemID = "itemId"

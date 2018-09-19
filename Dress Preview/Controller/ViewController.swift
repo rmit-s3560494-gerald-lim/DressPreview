@@ -9,7 +9,7 @@
 import UIKit
 import Disk
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (clothes?.itemSummaries?.count) ?? 0
     }
@@ -18,40 +18,51 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! CollectionViewCell
         let cloth = clothes?.itemSummaries?[indexPath.row]
         //let url = URL(cloth?.image?.imageURL)
-        guard let url = URL(string: (cloth?.image?.imageURL)!) else {
-            return cell
-        }
-        let image = try? UIImage.init(withContentsOfUrl: url)!
-        cell.displayContent(image: image!, title: cloth?.title ?? "default value")
+        
+//        let image = try? UIImage.init(withContentsOfUrl: url)!
+        cell.displayContent(image: (cloth?.uimage)!, title: cloth?.title ?? "default value")
         return cell
     }
     
     @IBOutlet var searchBar: UISearchBar!
     
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var viewCollection: UICollectionView!
 
     var clothes: Cloth? = nil
+    var apiClient = EBAYAPIClient(token: "Bearer <no token>")
+    var cat = "15687"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let token = try? Disk.retrieve("OauthToken.json", from: .temporary, as: OauthResponse.self)
-        let apiClient = EBAYAPIClient(token: "Bearer <\(token?.accessToken ?? "no token")>")
-
+    @IBAction func SegmentedSwitched(_ sender: Any) {
+        if (self.cat == "15687"){
+            cat = "185075"
+        }
+        else {
+            cat = "15687"
+        }
+    }
+    fileprivate func apiSearch(_ apiClient: EBAYAPIClient, q: String, limit: String) {
+        //        if (apiClient.oauthToken == "Bearer <no token>"){
+        //            try? apiClient.getNewToken()
+        //        }
         
         // A simple request with no parameters
-        apiClient.search(q: "adidas", category: "15687", limit: "10") { response in
+        DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
+        }
+        apiClient.search(q: q, category: cat, limit: "10") { response in
             switch response {
             case .success(let dataContainer as Cloth):
+                self.clothes = dataContainer
                 DispatchQueue.main.async {
-                    self.clothes = dataContainer
-                    self.viewCollection.reloadData()
+                    self.viewCollection.reloadSections(IndexSet(integer: 0))
+                    self.loadingIndicator.stopAnimating()
                 }
             case .failure(let error as APIErrors):
                 let er = error.errors
                 print("\(String(describing: er?.first?.longMessage!))")
-                print("try get new token")
-                try? apiClient.getNewToken()
+                print("try to get a new token")
+                print(apiClient.isTokenValid())
             case .success(_): break
                 
             case .failure(_): break
@@ -59,8 +70,55 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let token = try? Disk.retrieve("OauthToken.json", from: .caches, as: OauthResponse.self)
+        if (token != nil) {
+            self.apiClient.oauthToken = "Bearer <\(token!.accessToken))>"
+        }
+        if (!self.apiClient.isTokenValid()) {
+            try? apiClient.refreshToken() { response in
+                switch response {
+                case .success(let _ as OauthResponse):
+                    print("Token refreshed successfully")
+                    self.apiSearch(self.apiClient, q: "adidas",limit: "10")
+                case .failure(let _ as OauthError):
+                    print("Token failed to refresh")
+                case .success(_):
+                    break
+                case .failure(_):
+                    break
+                }
+            }
+            
+        }
+        else {
+            self.apiSearch(self.apiClient, q: "adidas", limit: "10")
+        }
+    }
 }
 
+//MARK: search bar
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        apiSearch(apiClient, q: searchBar.text!, limit: "10")
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+}
+
+//MARK: loading images
 extension UIImage {
     
     convenience init?(withContentsOfUrl url: URL) throws {
@@ -69,4 +127,9 @@ extension UIImage {
         self.init(data: imageData)
     }
     
+}
+
+//MARK: loading spinner
+extension UIViewController {
+
 }

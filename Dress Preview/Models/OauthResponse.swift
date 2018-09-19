@@ -28,3 +28,7 @@ struct OauthError: Codable {
         case errorDescription = "error_description"
     }
 }
+
+struct TokenExpiry: Codable {
+    let expiryDate: Double
+}
