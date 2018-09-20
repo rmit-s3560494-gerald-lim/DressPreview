@@ -1,16 +1,20 @@
 PODS:
   - Disk (0.4.0)
+  - ReachabilitySwift (4.2.1)
 
 DEPENDENCIES:
   - Disk (~> 0.4.0)
+  - ReachabilitySwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Disk
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   Disk: ef2956657d5bb56034b38b29b352170165226440
+  ReachabilitySwift: 35720ffea59c1c76d15f885be77fd33e33985427
 
-PODFILE CHECKSUM: 0f561c35f2e1b6236241b8df69a77201c3ce621d
+PODFILE CHECKSUM: e135bcff4833c5505ea2fb7c5c46734c9f48865c
 
 COCOAPODS: 1.6.0.beta.1

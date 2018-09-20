@@ -78,7 +78,9 @@ public class EBAYAPIClient {
                     let oauthResponse = try? decoder.decode(OauthResponse.self, from: jsonData)
                     if (oauthResponse == nil){
                         let errors = try? decoder.decode(OauthError.self, from: jsonData)
-                        print("token not received \(String(describing: errors))")
+                        if errors != nil {
+                            print("token not received \(String(describing: errors))")
+                        }
                         completion(.failure(errors as Any))
                     }
                     else {
@@ -135,6 +137,7 @@ public class EBAYAPIClient {
                     }
                     for i in (cloths.itemSummaries?.indices)! {
                         guard let url = URL(string: (cloths.itemSummaries![i].image?.imageURL)!) else {
+                            print("Error ")
                             return
                         }
                         cloths.itemSummaries![i].uimage = try? UIImage.init(withContentsOfUrl: url)!

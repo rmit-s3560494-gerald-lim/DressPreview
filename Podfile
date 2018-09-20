@@ -7,5 +7,6 @@ target 'Dress Preview' do
 
   # Pods for Dress Preview
 pod 'Disk', '~> 0.4.0'
+pod 'ReachabilitySwift'
 
 end

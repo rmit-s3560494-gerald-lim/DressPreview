@@ -29,22 +29,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="teg-8u-Hoj"/>
                                 </connections>
                             </searchBar>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXO-co-0bd">
-                                <rect key="frame" x="0.0" y="64" width="414" height="96"/>
-                                <items>
-                                    <navigationItem title="Browse" largeTitleDisplayMode="always" id="2UK-kz-eJq"/>
-                                </items>
-                            </navigationBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-QZ-6Lb">
-                                <rect key="frame" x="141.66666666666666" y="64" width="130.99999999999997" height="29"/>
-                                <segments>
-                                    <segment title="Tops"/>
-                                    <segment title="Bottoms"/>
-                                </segments>
-                                <connections>
-                                    <action selector="SegmentedSwitched:" destination="BYZ-38-t0r" eventType="valueChanged" id="BF6-q7-do3"/>
-                                </connections>
-                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H5q-z2-Neu">
                                 <rect key="frame" x="20" y="216" width="374" height="471"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,6 +78,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="LwR-OY-Qv7"/>
                                 </connections>
                             </collectionView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXO-co-0bd">
+                                <rect key="frame" x="0.0" y="64" width="414" height="96"/>
+                                <items>
+                                    <navigationItem title="Browse" largeTitleDisplayMode="always" id="2UK-kz-eJq"/>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Csg-QZ-6Lb">
+                                <rect key="frame" x="141.66666666666666" y="64" width="130.99999999999997" height="29"/>
+                                <segments>
+                                    <segment title="Tops"/>
+                                    <segment title="Bottoms"/>
+                                </segments>
+                                <connections>
+                                    <action selector="SegmentedSwitched:" destination="BYZ-38-t0r" eventType="valueChanged" id="BF6-q7-do3"/>
+                                </connections>
+                            </segmentedControl>
                             <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wv3-ZA-Ryu">
                                 <rect key="frame" x="197" y="359.33333333333331" width="20" height="20"/>
                             </activityIndicatorView>
