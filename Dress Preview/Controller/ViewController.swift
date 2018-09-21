@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! CollectionViewCell
         if clothes != nil && clothes?.itemSummaries != nil {
             let cloth = clothes?.itemSummaries?[indexPath.row]
@@ -26,8 +27,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
-    @IBOutlet var searchBar: UISearchBar!
+    // Passing selected cell struct to DetailsViewController as viewCont
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
+        let viewCont = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
+        viewCont?.item = (clothes?.itemSummaries?[indexPath.row])!
+        self.navigationController?.pushViewController(viewCont!, animated: false)
+    }
+    
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet var viewCollection: UICollectionView!
     let reachability = Reachability()!
@@ -151,6 +159,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.apiSearch(self.apiClient, q: "adidas", limit: "10")
         }
     }
+
+    // Don't show navigation bar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    // Show navigation bar upon leaving view
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
 }
 
 //MARK: search bar
