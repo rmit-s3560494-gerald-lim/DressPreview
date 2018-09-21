@@ -146,7 +146,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                     break
                 }
             }
-            
         }
         else {
             self.apiSearch(self.apiClient, q: "adidas", limit: "10")
