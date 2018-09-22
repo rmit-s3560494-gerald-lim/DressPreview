@@ -49,8 +49,10 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     
     // Setting UIImageView as picture imported
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let image = chosenImage {
             myImageView.image = image
+            saveImage(imageName: "profilepic.png")
         }
         else {
             // Error message
@@ -61,9 +63,9 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getImage(imageName: "profilepic.png")
         genderTextField.text = genderSelected
         sizeTextField.text = sizeSelected
-        
         genderTextField.inputView = genderPicker
         sizeTextField.inputView = sizePicker
         genderPicker.delegate = self
@@ -112,6 +114,29 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
         else {
             return sizes[row]
         }
+    }
+    
+    func saveImage(imageName: String) {
+        let fileManager = FileManager.default
         
+        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        
+        let image = myImageView.image!
+        
+        let data = UIImagePNGRepresentation(image)
+        
+        fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+    }
+    
+    func getImage(imageName: String) {
+        let fileManager = FileManager.default
+        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        
+        if fileManager.fileExists(atPath: imagePath) {
+            myImageView.image = UIImage(contentsOfFile: imagePath)
+        }
+        else {
+            print("No Image found")
+        }
     }
 }
