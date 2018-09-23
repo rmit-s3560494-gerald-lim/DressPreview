@@ -14,12 +14,14 @@ import CoreData
 class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var item: Item? = nil
-    var receivedItems = [Item]();
+    var receivedItems = [Item]()
     
     let reachability = Reachability()!
     var apiClient = EBAYAPIClient(token: "Bearer <no token>")
     
-    @IBOutlet var viewCollection: UICollectionView!
+    @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var viewCollection: UICollectionView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
@@ -27,18 +29,30 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! CollectionViewCell
 
         if(!receivedItems.isEmpty) {
-            print(indexPath.count)
             let displayedItem = receivedItems[indexPath.row]
             cell.displayItem(image: (displayedItem.uimage)!, title: displayedItem.title ?? "default value")
+            cell.delegate = self
         }
         
         return cell
     }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
 
+        if let indexPaths = viewCollection?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                if let cell = viewCollection?.cellForItem(at: indexPath) as? CollectionViewCell {
+                    cell.isEditing = editing
+                }
+            }
+        }
+    }
+    
     @objc func reachabilityChanged(note: Notification) {
         
         let reachability = note.object as! Reachability
@@ -59,19 +73,30 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     fileprivate func apiSearch(_ apiClient: EBAYAPIClient, q: String) {
+        DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
+        }
         if reachability.connection != .none {
             apiClient.searchItem(q: q) { response in
                 switch response {
                 case .success(let dataContainer as Item):
-                    self.item = dataContainer
-                    self.receivedItems.append(self.item!)
+                    if !self.receivedItems.contains(where: {$0.itemID == dataContainer.itemID}) {
+                        self.receivedItems.append(dataContainer)
+                    }
                     DispatchQueue.main.async {
-                    self.viewCollection.reloadSections(IndexSet(integer: 0))
+                        self.viewCollection.reloadSections(IndexSet(integer: 0))
+                        self.loadingIndicator.stopAnimating()
                     }
                 case .failure(let error as APIErrors):
                     let er = error.errors
                     if er != nil && er?.first != nil && er?.first?.longMessage != nil {
                         print("\(String(describing: er?.first?.longMessage))")
+                    }
+                    print("try to get a new token")
+                    print(apiClient.isTokenValid())
+                    DispatchQueue.main.async {
+                        self.loadingIndicator.stopAnimating()
+                        self.loadingIndicator.isHidden = true;
                     }
                 case .success(_): break
                     
@@ -80,6 +105,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
                         let alert = UIAlertController(title: "Error", message: res, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                         self.present(alert, animated: true)
+                        self.loadingIndicator.stopAnimating()
                     }
                 case .failure(_):
                     break
@@ -95,19 +121,59 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)
-            
             // pull each data out of favourites attrib and search for that item
             for data in result as! [NSManagedObject] {
                 let str = data.value(forKey: "favourites") as! String
                 self.apiSearch(self.apiClient, q: str)
             }
-        } catch {
+        }
+        catch {
             print("Failed")
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        do{
+            let results = try context.fetch(request)
+            for result in results as! [NSManagedObject]
+            {
+                let resultString = result.value(forKey: "favourites") as! String
+                
+                if !receivedItems.contains(where: {$0.itemID == resultString}) {
+                    self.apiSearch(self.apiClient, q: resultString)
+                }
+            }
+            try context.save()
+        } catch {
+            print("Failed")
+        }
+        
+        DispatchQueue.main.async {
+            self.viewCollection.reloadData();
+        }
+        
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navBar.rightBarButtonItem = self.editButtonItem
+        self.loadingIndicator.stopAnimating()
+        
+        // Check connection to internet through wifi or 4g otherwise print error
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Connected to wifi")
+            } else {
+                print("Connected to cellular")
+            }
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do{
             try reachability.startNotifier()
@@ -137,6 +203,38 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
         else {
             CoreDataSearch()
+        }
+    }
+}
+extension FavouritesViewController : ViewCellDelegate {
+    func delete(cell: CollectionViewCell) {
+        print("before delete: ")
+        print(receivedItems.count)
+        
+        if let indexPath = viewCollection?.indexPath(for: cell) {
+            // Delete from data source
+            let toRemove = receivedItems[indexPath.row].itemID
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let myRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            myRequest.predicate = NSPredicate(format: "favourites = %@", toRemove!)
+            do{
+                let results = try context.fetch(myRequest)
+                for result in results
+                {
+                    context.delete(result as! NSManagedObject)
+                    print("success deleted from favourites edit switch")
+                }
+                try context.save()
+                receivedItems.remove(at: indexPath.row)
+                print("after delete: ")
+                print(receivedItems.count)
+            } catch let error{
+                print(error)
+            }
+            // Delete from view collection
+            viewCollection?.deleteItems(at: [indexPath])
         }
     }
 }

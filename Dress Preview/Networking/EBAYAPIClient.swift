@@ -36,16 +36,6 @@ public class EBAYAPIClient {
     func createUrlRequestSpecificItem(q: String) throws -> URLRequest {
         let tmp = "https://api.ebay.com/buy/browse/v1/item/" + q
         let url = URL(string: tmp.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlFragmentAllowed)!)
-        
-//        var newQ = q.replacingOccurrences(of: "|", with: "%7C")
-//        print("new Q: " + newQ )
-//        self.components.path = "/buy/browse/v1/item"
-//        let queryItemQ = URLQueryItem(name: "q", value: newQ)
-//        components.queryItems = [queryItemQ]
-//        guard let url = components.url else {
-//            print("Error: cannot create URL")
-//            throw EBAYApiError.cantCreateUrl
-//        }
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.addValue(self.oauthToken, forHTTPHeaderField: "Authorization")
@@ -173,7 +163,7 @@ public class EBAYAPIClient {
     func searchItem(q: String?, completion: @escaping (_ result: Result<Any>) -> Void) {
         var request:URLRequest? = nil
         do {
-            request = try createUrlRequestSpecificItem(q: q!) // force !
+            request = try createUrlRequestSpecificItem(q: q!)
         } catch EBAYApiError.cantCreateUrl {
             return
         } catch {}
@@ -186,7 +176,7 @@ public class EBAYAPIClient {
                 return
             } else if let jsonData = responseData {
                 let decoder = JSONDecoder()
-                
+            
                 do {
                     var item = try decoder.decode(Item.self, from: jsonData)
                     if (item.itemID == nil)
