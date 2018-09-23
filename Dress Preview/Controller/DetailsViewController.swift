@@ -46,6 +46,29 @@ class DetailsViewController: UIViewController {
         }
     }
     
+    // Force touch actions defined here
+    override var previewActionItems: [UIPreviewActionItem] {
+        
+        let favouriteAction = UIPreviewAction(title: "Add to Favourites", style: .default) { (action: UIPreviewAction, DetailsViewController) -> Void in
+            // Add to favourites functionality
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
+            let currUser = NSManagedObject(entity: entity!, insertInto: context)
+            currUser.setValue(self.item?.itemID, forKey: "favourites")
+            do {
+                try context.save()
+                print("success add to fav switch")
+                self.favButton.setTitle("Remove from Favourites", for: .normal)
+                self.isInFav = true
+            } catch {
+                print("Failed saving")
+            }
+        }
+        return [favouriteAction]
+        
+    }
+    
     @IBAction func ebayBuyButtonPressed(_ sender: Any) {
         UIApplication.shared.open(URL(string: (item?.itemWebURL)!)!)
     }

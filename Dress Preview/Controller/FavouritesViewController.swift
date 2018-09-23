@@ -163,6 +163,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         self.navBar.rightBarButtonItem = self.editButtonItem
+        
         self.loadingIndicator.stopAnimating()
         
         // Check connection to internet through wifi or 4g otherwise print error
@@ -208,9 +209,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
 }
 extension FavouritesViewController : ViewCellDelegate {
     func delete(cell: CollectionViewCell) {
-        print("before delete: ")
-        print(receivedItems.count)
-        
         if let indexPath = viewCollection?.indexPath(for: cell) {
             // Delete from data source
             let toRemove = receivedItems[indexPath.row].itemID
@@ -224,12 +222,9 @@ extension FavouritesViewController : ViewCellDelegate {
                 for result in results
                 {
                     context.delete(result as! NSManagedObject)
-                    print("success deleted from favourites edit switch")
                 }
                 try context.save()
                 receivedItems.remove(at: indexPath.row)
-                print("after delete: ")
-                print(receivedItems.count)
             } catch let error{
                 print(error)
             }

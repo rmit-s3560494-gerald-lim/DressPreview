@@ -10,7 +10,8 @@ import UIKit
 import Disk
 import Reachability
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerPreviewingDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (clothes?.itemSummaries?.count) ?? 0
     }
@@ -29,7 +30,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Passing selected cell struct to DetailsViewController as viewCont
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+        // Register collectionView for force touching
+//        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+//            registerForPreviewing(with: self, sourceView: view)
+//        } else {
+//            print("not compatible")
+//        }
         let viewCont = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
         viewCont?.item = (clothes?.itemSummaries?[indexPath.row])!
         self.navigationController?.pushViewController(viewCont!, animated: false)
@@ -115,9 +121,53 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        // First, get the index path and view for the previewed cell.
+//        let indexPath = tableView.indexPathForRowAtPoint(self.view.convertPoint(location, toView: tableView))
+        guard let indexPath = viewCollection?.indexPathForItem(at: location) else { return nil }
+        guard let cell = viewCollection?.cellForItem(at: indexPath) else { return nil }
+        
+        // Controller that the 3DTouch is peeking into
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return nil }
+        
+        let item = clothes?.itemSummaries?[indexPath.row]
+        detailVC.item = item
+        
+        // Set 3DTouch content size
+        detailVC.preferredContentSize = CGSize(width: 0.0, height: 300)
+        
+        // Enable blurring of other UI elements, and a zoom in animation while peeking.
+        previewingContext.sourceRect = cell.frame
+        
+        return detailVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        // Controller for final pop
+        let finalView = viewControllerToCommit as! DetailsViewController
+        show(finalView, sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewCollection.isSpringLoaded = true
+        
+        if( traitCollection.forceTouchCapability == .available){
+            
+            registerForPreviewing(with: self, sourceView: view)
+            
+        }
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Connected to wifi")
+            } else {
+                print("Connected to cellular")
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            print("Not reachable")
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do{
             try reachability.startNotifier()

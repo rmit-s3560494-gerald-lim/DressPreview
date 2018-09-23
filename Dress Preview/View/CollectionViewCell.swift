@@ -25,10 +25,9 @@ class CollectionViewCell: UICollectionViewCell {
     
     weak var delegate: ViewCellDelegate?
     
-    func displayContent(image: UIImage, title: String/*, desc: String*/){
+    func displayContent(image: UIImage, title: String){
         clothImage.image = image
         clothLabel.text = title
-        //clothDescription.text = desc
     }
     
     func displayItem(image: UIImage, title: String) {
@@ -37,7 +36,7 @@ class CollectionViewCell: UICollectionViewCell {
         
         deleteButtonBGView.layer.cornerRadius = deleteButtonBGView.bounds.width / 2.0
         deleteButtonBGView.layer.masksToBounds = true
-        deleteButtonBGView.isHidden = !isEditing
+        deleteButtonBGView.isHidden = true
     }
     
     var isEditing: Bool = false {
