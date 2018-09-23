@@ -29,10 +29,18 @@ class CollectionViewCell: UICollectionViewCell {
     }
 }
 
-class PreviewCell: UICollectionViewCell {
+class PreviewCellTop: UICollectionViewCell {
     @IBOutlet var im: UIImageView!
     
     func displayContent(image: UIImage) {
        self.im.image = image
+    }
+}
+
+class PreviewCellBot: UICollectionViewCell {
+    @IBOutlet var im: UIImageView!
+    
+    func displayContent(image: UIImage) {
+        self.im.image = image
     }
 }

@@ -25,7 +25,6 @@ public class EBAYAPIClient {
         components.queryItems = [queryItemQ, queryItemCategory, queryItemlimit]
         
         guard let url = components.url else {
-            print("Error: cannot create URL")
             throw EBAYApiError.cantCreateUrl
         }
         var request = URLRequest(url: url)
@@ -47,10 +46,6 @@ public class EBAYAPIClient {
 //            print("Error: cannot create URL")
 //            throw EBAYApiError.cantCreateUrl
 //        }
-
-        print("GET URL is: ")
-        print(url)
-        
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         request.addValue(self.oauthToken, forHTTPHeaderField: "Authorization")
@@ -60,17 +55,14 @@ public class EBAYAPIClient {
     func isTokenValid() -> Bool {
         let exp = try? Disk.retrieve("TokenExpiry.json", from: .caches, as: TokenExpiry.self)
         if (exp == nil){
-            print("no file TokenExpiry.json")
             return false
         }
         else {
             let d = Date().timeIntervalSinceReferenceDate
             if (d < (exp?.expiryDate)!)
             {
-                print("token expiry valid")
                 return true
             }
-            print("Token expired")
             return false
         }
     }
@@ -78,7 +70,6 @@ public class EBAYAPIClient {
     func refreshToken(completion: @escaping (_ result: Result<Any>) -> Void) throws {
         self.components.path = "/identity/v1/oauth2/token"
         guard let url = components.url else {
-            print("Error: cannot create URL")
             throw EBAYApiError.cantCreateUrl
         }
         var request = URLRequest(url: url)
@@ -180,12 +171,10 @@ public class EBAYAPIClient {
     }
     
     func searchItem(q: String?, completion: @escaping (_ result: Result<Any>) -> Void) {
-        print("EBAYAPICLIENT SEARCHING FOR A PRODUCT")
         var request:URLRequest? = nil
         do {
             request = try createUrlRequestSpecificItem(q: q!) // force !
         } catch EBAYApiError.cantCreateUrl {
-            print("Can't create URL ")
             return
         } catch {}
         
@@ -206,11 +195,8 @@ public class EBAYAPIClient {
                         completion(.failure(errors))
                     }
                     guard let url = URL(string: (item.image?.imageURL)!) else {
-                        print("Error ")
                         return
                     }
-                    print("Image url is ")
-                    print(url)
                     item.uimage = try? UIImage.init(withContentsOfUrl: url)!
                     completion(.success(item))
                 } catch {
