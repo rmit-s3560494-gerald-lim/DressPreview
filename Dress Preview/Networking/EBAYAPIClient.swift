@@ -34,6 +34,29 @@ public class EBAYAPIClient {
         return request
     }
     
+    func createUrlRequestSpecificItem(q: String) throws -> URLRequest {
+        let tmp = "https://api.ebay.com/buy/browse/v1/item/" + q
+        let url = URL(string: tmp.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlFragmentAllowed)!)
+        
+//        var newQ = q.replacingOccurrences(of: "|", with: "%7C")
+//        print("new Q: " + newQ )
+//        self.components.path = "/buy/browse/v1/item"
+//        let queryItemQ = URLQueryItem(name: "q", value: newQ)
+//        components.queryItems = [queryItemQ]
+//        guard let url = components.url else {
+//            print("Error: cannot create URL")
+//            throw EBAYApiError.cantCreateUrl
+//        }
+
+        print("GET URL is: ")
+        print(url)
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        request.addValue(self.oauthToken, forHTTPHeaderField: "Authorization")
+        return request
+    }
+    
     func isTokenValid() -> Bool {
         let exp = try? Disk.retrieve("TokenExpiry.json", from: .caches, as: TokenExpiry.self)
         if (exp == nil){
@@ -143,6 +166,53 @@ public class EBAYAPIClient {
                         cloths.itemSummaries![i].uimage = try? UIImage.init(withContentsOfUrl: url)!
                     }
                     completion(.success(cloths))
+                } catch {
+                    print(error)
+                    return
+                }
+            } else {
+                let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Data was not retrieved from request"]) as Error
+                print(error)
+                return
+            }
+        }
+        task.resume()
+    }
+    
+    func searchItem(q: String?, completion: @escaping (_ result: Result<Any>) -> Void) {
+        print("EBAYAPICLIENT SEARCHING FOR A PRODUCT")
+        var request:URLRequest? = nil
+        do {
+            request = try createUrlRequestSpecificItem(q: q!) // force !
+        } catch EBAYApiError.cantCreateUrl {
+            print("Can't create URL ")
+            return
+        } catch {}
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.dataTask(with: request!) { (responseData, response, responseError) in
+            if let error = responseError {
+                print(error)
+                return
+            } else if let jsonData = responseData {
+                let decoder = JSONDecoder()
+                
+                do {
+                    var item = try decoder.decode(Item.self, from: jsonData)
+                    if (item.itemID == nil)
+                    {
+                        let errors = try decoder.decode(APIErrors.self, from: jsonData)
+                        completion(.failure(errors))
+                    }
+                    guard let url = URL(string: (item.image?.imageURL)!) else {
+                        print("Error ")
+                        return
+                    }
+                    print("Image url is ")
+                    print(url)
+                    item.uimage = try? UIImage.init(withContentsOfUrl: url)!
+                    completion(.success(item))
                 } catch {
                     print(error)
                     return

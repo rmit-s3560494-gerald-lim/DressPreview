@@ -23,6 +23,8 @@
 		7439A872212131BF00CCEE29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7439A870212131BF00CCEE29 /* LaunchScreen.storyboard */; };
 		748972B9214F58480077FFCB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748972B8214F58480077FFCB /* SettingsController.swift */; };
 		84550A66AC37B969257BCDA9 /* Pods_Dress_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBABEEFF3A86B3B7C9EAE723 /* Pods_Dress_Preview.framework */; };
+		C7099C622155A5F300BBB670 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7099C612155A5F300BBB670 /* Item.swift */; };
+		C7099C642155AA0B00BBB670 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7099C632155AA0B00BBB670 /* FavouritesViewController.swift */; };
 		C76E1AC5212A630700E4DF00 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C76E1AC4212A630600E4DF00 /* Default-568h@2x.png */; };
 		C794CAD72154B1A300675FFE /* user.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C794CAD52154B1A300675FFE /* user.xcdatamodeld */; };
 		C7D8A1EF214F32A200F0F8A1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8A1EE214F32A200F0F8A1 /* DetailsViewController.swift */; };
@@ -48,6 +50,8 @@
 		748972B8214F58480077FFCB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		7BB5F142164235C05F05FFD3 /* Pods-Dress Preview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dress Preview.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dress Preview/Pods-Dress Preview.release.xcconfig"; sourceTree = "<group>"; };
 		BBABEEFF3A86B3B7C9EAE723 /* Pods_Dress_Preview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dress_Preview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7099C612155A5F300BBB670 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C7099C632155AA0B00BBB670 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		C76E1AC4212A630600E4DF00 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C794CAD62154B1A300675FFE /* user.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = user.xcdatamodel; sourceTree = "<group>"; };
 		C794CADC2154B33E00675FFE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/kingkung/University/2018/semester_2_2018/iPhone/Assignments/M2/DressPreview/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -91,6 +95,7 @@
 				C794CAD52154B1A300675FFE /* user.xcdatamodeld */,
 				0F42826F2150E7A3001DAC82 /* OauthToken.swift */,
 				0F42827121510717001DAC82 /* OauthResponse.swift */,
+				C7099C612155A5F300BBB670 /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 				7439A869212131BD00CCEE29 /* ViewController.swift */,
 				748972B8214F58480077FFCB /* SettingsController.swift */,
 				C7D8A1EE214F32A200F0F8A1 /* DetailsViewController.swift */,
+				C7099C632155AA0B00BBB670 /* FavouritesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,7 +304,9 @@
 				748972B9214F58480077FFCB /* SettingsController.swift in Sources */,
 				0F42826C2150BF68001DAC82 /* EBAYApiError.swift in Sources */,
 				0F728A46214F383A00548AE7 /* EBAYAPIClient.swift in Sources */,
+				C7099C642155AA0B00BBB670 /* FavouritesViewController.swift in Sources */,
 				0F7AF942214B7B880082AE19 /* Cloth.swift in Sources */,
+				C7099C622155A5F300BBB670 /* Item.swift in Sources */,
 				7439A86A212131BD00CCEE29 /* ViewController.swift in Sources */,
 				0F42826E2150C4ED001DAC82 /* ErrorResponse.swift in Sources */,
 				7439A868212131BD00CCEE29 /* AppDelegate.swift in Sources */,
