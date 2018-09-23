@@ -117,18 +117,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi {
-                print("Connected to wifi")
-            } else {
-                print("Connected to cellular")
-            }
-        }
-        reachability.whenUnreachable = { _ in
-            print("Not reachable")
-        }
-        
+        viewCollection.isSpringLoaded = true
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         do{
             try reachability.startNotifier()
@@ -202,13 +191,7 @@ extension UIImage {
     
     convenience init?(withContentsOfUrl url: URL) throws {
         let imageData = try Data(contentsOf: url)
-        
         self.init(data: imageData)
     }
-    
-}
-
-//MARK: loading spinner
-extension UIViewController {
     
 }

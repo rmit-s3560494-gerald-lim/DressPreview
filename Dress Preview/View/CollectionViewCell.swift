@@ -28,3 +28,11 @@ class CollectionViewCell: UICollectionViewCell {
         itemLabel.text = title
     }
 }
+
+class PreviewCell: UICollectionViewCell {
+    @IBOutlet var im: UIImageView!
+    
+    func displayContent(image: UIImage) {
+       self.im.image = image
+    }
+}
