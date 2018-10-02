@@ -217,13 +217,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //MARK: search bar
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let text = searchBar.text
         let q = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         if (!(q?.isEmpty)!)
         {
             apiSearch(apiClient, q: searchBar.text!, limit: "10")
         }
         searchBar.showsCancelButton = false
-        searchBar.text = ""
+        searchBar.text = text
         searchBar.resignFirstResponder()
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
