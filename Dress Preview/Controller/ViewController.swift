@@ -31,11 +31,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Passing selected cell struct to DetailsViewController as viewCont
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Register collectionView for force touching
-//        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
-//            registerForPreviewing(with: self, sourceView: view)
-//        } else {
-//            print("not compatible")
-//        }
         let viewCont = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
         viewCont?.item = (clothes?.itemSummaries?[indexPath.row])!
         self.navigationController?.pushViewController(viewCont!, animated: false)
@@ -53,9 +48,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBAction func SegmentedSwitched(_ sender: Any) {
         if (self.cat == "15687"){
             cat = "185075"
+            let q = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            if (!(q?.isEmpty)!)
+            {
+                apiSearch(apiClient, q: q!, limit: "10")
+            }
+            else {
+                apiSearch(apiClient, q: "adidas", limit: "10")
+            }
         }
         else {
             cat = "15687"
+            let q = searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            if (!(q?.isEmpty)!)
+            {
+                apiSearch(apiClient, q: q!, limit: "10")
+            }
+            else {
+                apiSearch(apiClient, q: "adidas", limit: "10")
+            }
         }
     }
     
@@ -123,7 +134,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         // First, get the index path and view for the previewed cell.
-//        let indexPath = tableView.indexPathForRowAtPoint(self.view.convertPoint(location, toView: tableView))
         guard let indexPath = viewCollection?.indexPathForItem(at: location) else { return nil }
         guard let cell = viewCollection?.cellForItem(at: indexPath) else { return nil }
         
