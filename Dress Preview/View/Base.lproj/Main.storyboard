@@ -349,7 +349,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-SQ-WLZ">
-                                <rect key="frame" x="100" y="446" width="278.66666666666663" height="17"/>
+                                <rect key="frame" x="100.33333333333334" y="446" width="278.33333333333326" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -358,7 +358,7 @@
                                 <rect key="frame" x="184" y="341" width="46" height="30"/>
                                 <state key="normal" title="Import"/>
                                 <connections>
-                                    <action selector="importImage:" destination="0vA-ST-Pnl" eventType="touchUpInside" id="ujP-n1-jTc"/>
+                                    <action selector="imagePickerBtnActionWithSelectedButton:" destination="0vA-ST-Pnl" eventType="touchUpInside" id="u0e-9p-rfo"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Upload Image" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-my-CoU">
@@ -375,7 +375,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7i-2A-kdJ">
-                                <rect key="frame" x="100" y="500" width="278.66666666666663" height="17"/>
+                                <rect key="frame" x="100.33333333333334" y="500" width="278.33333333333326" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
