@@ -34,8 +34,10 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
 
         if(!receivedItems.isEmpty) {
             let displayedItem = receivedItems[indexPath.row]
-            cell.displayItem(image: (displayedItem.uimage)!, title: displayedItem.title ?? "default value")
-            cell.delegate = self
+            if displayedItem.uimage != nil {
+                cell.displayItem(image: (displayedItem.uimage)!, title: displayedItem.title ?? "default value")
+                cell.delegate = self
+            }
         }
         
         return cell

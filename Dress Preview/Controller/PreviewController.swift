@@ -43,11 +43,15 @@ UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == TopCollection {
             topPreview.image = UIImage(named: imageArrayTop[indexPath.row])
-            TopCollection.isHidden = true
+            if !UIApplication.shared.statusBarOrientation.isLandscape {
+                TopCollection.isHidden = true
+            }
         }
         else {
             botPreview.image = UIImage(named: imageArray[indexPath.row])
-            BotCollection.isHidden = true
+            if !UIApplication.shared.statusBarOrientation.isLandscape {
+                BotCollection.isHidden = true
+            }
         }
     }
     
@@ -94,9 +98,30 @@ UICollectionViewDelegate {
         // make sure imageView can be interacted with by user
         botPreview.isUserInteractionEnabled = true
         topPreview.isUserInteractionEnabled = true
-        TopCollection.isHidden = true
-        BotCollection.isHidden = true
+        if !UIApplication.shared.statusBarOrientation.isLandscape {
+            TopCollection.isHidden = true
+            BotCollection.isHidden = true
+        }
     }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { context in
+            if UIApplication.shared.statusBarOrientation.isLandscape {
+                // activate landscape changes
+                if self.TopCollection != nil && self.BotCollection != nil {
+                    self.TopCollection.isHidden = false
+                    self.BotCollection.isHidden = false
+                }
+            } else {
+                // activate portrait changes
+                if self.TopCollection != nil && self.BotCollection != nil {
+                    self.TopCollection.isHidden = true
+                    self.BotCollection.isHidden = true
+                }
+            }
+        })
+    }
+    
     @IBOutlet var topPreview: UIImageView!
     @IBOutlet var TopCollection: UICollectionView!
     @IBOutlet var BotCollection: UICollectionView!
@@ -143,11 +168,12 @@ UICollectionViewDelegate {
     }
     
     @objc func imageTappedBot(gesture: UIGestureRecognizer) {
-        if (gesture.view as? UIImageView) != nil {
-            print("image bot tapped")
-            fetchFavSearch(sel: false)
+        if !UIApplication.shared.statusBarOrientation.isLandscape {
+            if (gesture.view as? UIImageView) != nil {
+                print("image bot tapped")
+                fetchFavSearch(sel: false)
+            }
         }
-        
     }
     
     fileprivate func fetchFavSearch(sel:Bool) {
@@ -200,9 +226,11 @@ UICollectionViewDelegate {
     
     @objc func imageTappedTop(gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
-        if (gesture.view as? UIImageView) != nil {
-            print("Image top Tapped")
-            fetchFavSearch(sel: true)
+        if !UIApplication.shared.statusBarOrientation.isLandscape {
+            if (gesture.view as? UIImageView) != nil {
+                print("Image top Tapped")
+                fetchFavSearch(sel: true)
+            }
         }
     }
 }
