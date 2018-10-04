@@ -15,8 +15,8 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     // Tapping on picture will ask for camera or photo library
     
     // Arrays for gender and size choosing
-    let genders = ["", "Male", "Female"]
-    let sizes = ["", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+    let genders = ["N/A", "Male", "Female"]
+    let sizes = ["N/A", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
     
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var genderTextField: UITextField!
@@ -28,10 +28,10 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     
     // User saved preferences
     var genderSelected: String {
-        return UserDefaults.standard.string(forKey: "genderSelected") ?? ""
+        return UserDefaults.standard.string(forKey: "genderSelected") ?? "N/A"
     }
     var sizeSelected: String {
-        return UserDefaults.standard.string(forKey: "sizeSelected") ?? ""
+        return UserDefaults.standard.string(forKey: "sizeSelected") ?? "N/A"
     }
     
     //MARK:- Image Picker
