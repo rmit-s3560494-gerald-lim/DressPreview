@@ -10,13 +10,11 @@ import Foundation
 import UIKit
 
 class SettingsController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    // Main idea: Using UIPickerView that will only display on button click
+    
+        // Main idea: Using UIPickerView that will only display on button click
     // Tapping on picture will ask for camera or photo library
     
-    // Arrays for gender and size choosing
-    let genders = ["", "Male", "Female"]
-    let sizes = ["", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+    let settings = UserSettings()
     
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var genderTextField: UITextField!
@@ -105,12 +103,13 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
         sizeTextField.inputView = sizePicker
         genderPicker.delegate = self
         sizePicker.delegate = self
+        print(settings.genders)
         
-        if let genderRow = genders.index(of: genderSelected) {
+        if let genderRow = settings.genders.index(of: genderSelected) {
             genderPicker.selectRow(genderRow, inComponent: 0, animated: false)
         }
 
-        if let sizeRow = sizes.index(of: sizeSelected) {
+        if let sizeRow = settings.sizes.index(of: sizeSelected) {
             sizePicker.selectRow(sizeRow, inComponent: 0, animated: false)
         }
 
@@ -122,21 +121,21 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if(pickerView == genderPicker) {
-            return genders.count
+            return settings.genders.count
         }
         else {
-            return sizes.count
+            return settings.sizes.count
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if(pickerView == genderPicker) {
-            genderTextField.text = genders[row]
-            UserDefaults.standard.set(genders[row], forKey: "genderSelected")
+            genderTextField.text = settings.genders[row]
+            UserDefaults.standard.set(settings.genders[row], forKey: "genderSelected")
         }
         else {
-            sizeTextField.text = sizes[row]
-            UserDefaults.standard.set(sizes[row], forKey: "sizeSelected")
+            sizeTextField.text = settings.sizes[row]
+            UserDefaults.standard.set(settings.sizes[row], forKey: "sizeSelected")
         }
         
         self.view.endEditing(true)
@@ -144,10 +143,10 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView == genderPicker) {
-            return genders[row]
+            return settings.genders[row]
         }
         else {
-            return sizes[row]
+            return settings.sizes[row]
         }
     }
     
