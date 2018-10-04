@@ -11,7 +11,7 @@ import Disk
 import Reachability
 import CoreData
 
-class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var item: Item? = nil
     var receivedItems = [Item]()
@@ -22,6 +22,54 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var viewCollection: UICollectionView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    //MARK:- Image Picker
+    @IBAction func imagePickerBtnAction(selectedButton: UIButton)
+    {
+        
+        let alert = UIAlertController(title: "Import Image From", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.importImage((Any).self)
+        }))
+        
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func openCamera()
+    {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "No camera available", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    // import image function
+    @IBAction func importImage(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        image.allowsEditing = false
+        self.present(image, animated: true) {
+            // after completion
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
