@@ -26,10 +26,10 @@ class SettingsController: UIViewController, UINavigationControllerDelegate, UIIm
     
     // User saved preferences
     var genderSelected: String {
-        return UserDefaults.standard.string(forKey: "genderSelected") ?? "N/A"
+        return UserDefaults.standard.string(forKey: "genderSelected") ?? "N/D"
     }
     var sizeSelected: String {
-        return UserDefaults.standard.string(forKey: "sizeSelected") ?? "N/A"
+        return UserDefaults.standard.string(forKey: "sizeSelected") ?? "N/D"
     }
     
     //MARK:- Image Picker

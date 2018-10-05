@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 struct UserSettings: Codable {
-    let genders = ["", "Male", "Female"]
-    let sizes = ["", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+    let genders = ["N/D", "Male", "Female"]
+    let sizes = ["N/D", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
 }
 
 
