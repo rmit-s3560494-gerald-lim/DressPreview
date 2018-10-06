@@ -20,35 +20,34 @@ UICollectionViewDelegate {
     let reachability = Reachability()!
     var apiClient = EBAYAPIClient(token: "Bearer <no token>")
     
-    let imageArray = ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg"]
-    let imageArrayTop = ["1top.jpeg","2top.jpeg","3top.jpeg","4top.jpeg","5top.jpeg"]
+    let previewClothing = PreviewClothing()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArrayTop.count
+        return previewClothing.imageArrayTop.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == TopCollection {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopCell", for: indexPath) as! PreviewCellTop
-            cell.displayContent(image: UIImage(named: imageArrayTop[indexPath.row])!)
+            cell.displayContent(image: UIImage(named: previewClothing.imageArrayTop[indexPath.row])!)
             return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BotCell", for: indexPath) as! PreviewCellBot
-            cell.displayContent(image: UIImage(named: imageArray[indexPath.row])!)
+            cell.displayContent(image: UIImage(named: previewClothing.imageArray[indexPath.row])!)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == TopCollection {
-            topPreview.image = UIImage(named: imageArrayTop[indexPath.row])
+            topPreview.image = UIImage(named: previewClothing.imageArrayTop[indexPath.row])
             if !UIApplication.shared.statusBarOrientation.isLandscape {
                 TopCollection.isHidden = true
             }
         }
         else {
-            botPreview.image = UIImage(named: imageArray[indexPath.row])
+            botPreview.image = UIImage(named: previewClothing.imageArray[indexPath.row])
             if !UIApplication.shared.statusBarOrientation.isLandscape {
                 BotCollection.isHidden = true
             }
