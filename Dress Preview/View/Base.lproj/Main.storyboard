@@ -207,6 +207,70 @@
             </objects>
             <point key="canvasLocation" x="1027.536231884058" y="1619.8369565217392"/>
         </scene>
+        <!--Import Favourites Controller-->
+        <scene sceneID="mC1-na-LhE">
+            <objects>
+                <viewController id="gk7-lP-6cQ" customClass="ImportFavouritesController" customModule="Dress_Preview" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fYu-nW-Y8q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Upload Image" translatesAutoresizingMaskIntoConstraints="NO" id="o2Q-14-GdW">
+                                <rect key="frame" x="87" y="77" width="240" height="235"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5q-B0-yoL">
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Import to Favourites" id="g7B-B6-IxA">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Uu7-mo-xRY">
+                                            <connections>
+                                                <segue destination="iLT-sk-Ahs" kind="unwind" unwindAction="unwindToFavouritesViewController:" id="NCd-py-dd9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6zD-J7-XYd"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLq-oC-xJ4">
+                                <rect key="frame" x="185" y="320" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Import"/>
+                                <connections>
+                                    <action selector="imagePickerBtnActionWithSelectedButton:" destination="gk7-lP-6cQ" eventType="touchUpInside" id="oRu-jo-U3k"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXh-GH-Far">
+                                <rect key="frame" x="159" y="387" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptL-AP-GH8">
+                                <rect key="frame" x="162" y="358" width="90" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Apg-nm-kti"/>
+                    </view>
+                    <connections>
+                        <outlet property="myImageView" destination="o2Q-14-GdW" id="Ssg-VE-rmv"/>
+                        <outlet property="nameFav" destination="fXh-GH-Far" id="2uA-IJ-NfA"/>
+                        <outlet property="namingFav" destination="fXh-GH-Far" id="all-ep-Qik"/>
+                        <outlet property="saveNow" destination="6zD-J7-XYd" id="WHZ-S2-W1n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFx-CE-1RW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="iLT-sk-Ahs" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1105.7971014492755" y="908.96739130434787"/>
+        </scene>
         <!--Favourites-->
         <scene sceneID="Nmm-HA-8o2">
             <objects>
@@ -304,17 +368,17 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rtA-UO-dma">
                                 <rect key="frame" x="197" y="337.33333333333331" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCc-wI-THh">
-                                <rect key="frame" x="184" y="640" width="46" height="30"/>
-                                <state key="normal" title="Import"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uci-vh-srX">
+                                <rect key="frame" x="156" y="637" width="102" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Import Clothes"/>
                                 <connections>
-                                    <action selector="imagePickerBtnActionWithSelectedButton:" destination="fZd-RH-fz2" eventType="touchUpInside" id="ySD-Kx-65O"/>
+                                    <segue destination="gk7-lP-6cQ" kind="presentation" id="OWf-g4-2vH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WCc-wI-THh" firstAttribute="centerX" secondItem="rtA-UO-dma" secondAttribute="centerX" id="49G-UZ-q3S"/>
                             <constraint firstItem="6tC-UO-ddL" firstAttribute="bottom" secondItem="xYH-Pg-nNd" secondAttribute="bottom" id="5Ym-de-lza"/>
                             <constraint firstItem="6tC-UO-ddL" firstAttribute="trailing" secondItem="xYH-Pg-nNd" secondAttribute="trailing" constant="20" id="BC6-Cp-VD4"/>
                             <constraint firstItem="rtA-UO-dma" firstAttribute="centerY" secondItem="6tC-UO-ddL" secondAttribute="centerY" constant="-6.21" id="E6k-jr-bjG"/>
@@ -322,7 +386,6 @@
                             <constraint firstItem="UKA-bd-lrA" firstAttribute="top" secondItem="6tC-UO-ddL" secondAttribute="top" id="MpM-AR-vYL"/>
                             <constraint firstItem="rtA-UO-dma" firstAttribute="centerX" secondItem="6tC-UO-ddL" secondAttribute="centerX" id="RTo-jE-BPW"/>
                             <constraint firstItem="xYH-Pg-nNd" firstAttribute="top" secondItem="UKA-bd-lrA" secondAttribute="bottom" constant="19" id="WcR-H5-hXH"/>
-                            <constraint firstItem="6tC-UO-ddL" firstAttribute="bottom" secondItem="WCc-wI-THh" secondAttribute="bottom" constant="17" id="i40-Nh-SuT"/>
                             <constraint firstItem="UKA-bd-lrA" firstAttribute="leading" secondItem="6tC-UO-ddL" secondAttribute="leading" id="qKy-Tn-tVE"/>
                             <constraint firstItem="6tC-UO-ddL" firstAttribute="trailing" secondItem="UKA-bd-lrA" secondAttribute="trailing" id="zlR-Kv-I0t"/>
                         </constraints>
@@ -373,7 +436,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XsH-Xs-LTN">
-                                <rect key="frame" x="35.666666666666629" y="421" width="343" height="129.33333333333337"/>
+                                <rect key="frame" x="35.666666666666657" y="421" width="343" height="129.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRj-VA-JDN">
                                         <rect key="frame" x="0.0" y="0.0" width="29" height="20.333333333333332"/>
