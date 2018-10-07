@@ -17,6 +17,7 @@
 		0F7AF942214B7B880082AE19 /* Cloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7AF941214B7B880082AE19 /* Cloth.swift */; };
 		0F7AF955214B7BC70082AE19 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		0FA6170D21479322003333C2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA6170C21479322003333C2 /* CollectionViewCell.swift */; };
+		0FC0EF252165F0DE003D87C5 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0EF242165F0DE003D87C5 /* UserSettings.swift */; };
 		7439A868212131BD00CCEE29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439A867212131BD00CCEE29 /* AppDelegate.swift */; };
 		7439A86A212131BD00CCEE29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7439A869212131BD00CCEE29 /* ViewController.swift */; };
 		7439A86D212131BD00CCEE29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7439A86B212131BD00CCEE29 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		0F728A45214F383A00548AE7 /* EBAYAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBAYAPIClient.swift; sourceTree = "<group>"; };
 		0F7AF941214B7B880082AE19 /* Cloth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloth.swift; sourceTree = "<group>"; };
 		0FA6170C21479322003333C2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		0FC0EF242165F0DE003D87C5 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		357994196E9F0B3200EA52C7 /* Pods-Dress Preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dress Preview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dress Preview/Pods-Dress Preview.debug.xcconfig"; sourceTree = "<group>"; };
 		7439A864212131BD00CCEE29 /* Dress Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dress Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7439A867212131BD00CCEE29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		0F7AF940214B7B7B0082AE19 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0FC0EF242165F0DE003D87C5 /* UserSettings.swift */,
 				0F7AF941214B7B880082AE19 /* Cloth.swift */,
 				0F42826D2150C4ED001DAC82 /* ErrorResponse.swift */,
 				C794CAD52154B1A300675FFE /* user.xcdatamodeld */,
@@ -435,6 +438,7 @@
 				C7D8A1EF214F32A200F0F8A1 /* DetailsViewController.swift in Sources */,
 				0F42827221510717001DAC82 /* OauthResponse.swift in Sources */,
 				0FA6170D21479322003333C2 /* CollectionViewCell.swift in Sources */,
+				0FC0EF252165F0DE003D87C5 /* UserSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

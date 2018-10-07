@@ -204,9 +204,6 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
                 }
             }
         }
-        else {
-            CoreDataSearch()
-        }
     }
 }
 extension FavouritesViewController : ViewCellDelegate {

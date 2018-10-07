@@ -14,41 +14,49 @@ import Disk
 
 class PreviewController: UIViewController, UICollectionViewDataSource,
 UICollectionViewDelegate {
-    var item: Item? = nil
     var receivedItemsTops = [Item]();
+    var receivedItemsBots = [Item]();
     
     let reachability = Reachability()!
     var apiClient = EBAYAPIClient(token: "Bearer <no token>")
     
-    let imageArray = ["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg"]
-    let imageArrayTop = ["1top.jpeg","2top.jpeg","3top.jpeg","4top.jpeg","5top.jpeg"]
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArrayTop.count
+        print("number of items :\(receivedItemsTops.count)")
+        if collectionView == TopCollection {
+            return receivedItemsTops.count
+        }
+        else {
+            return receivedItemsBots.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == TopCollection {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopCell", for: indexPath) as! PreviewCellTop
-            cell.displayContent(image: UIImage(named: imageArrayTop[indexPath.row])!)
+            if receivedItemsTops[indexPath.row].uimage != nil {
+                cell.displayContent(image: receivedItemsTops[indexPath.row].uimage!)
+            }
+            
             return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BotCell", for: indexPath) as! PreviewCellBot
-            cell.displayContent(image: UIImage(named: imageArray[indexPath.row])!)
+            if receivedItemsBots[indexPath.row].uimage != nil {
+                cell.displayContent(image: receivedItemsBots[indexPath.row].uimage!)
+            }
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == TopCollection {
-            topPreview.image = UIImage(named: imageArrayTop[indexPath.row])
+            topPreview.image = receivedItemsTops[indexPath.row].uimage
             if !UIApplication.shared.statusBarOrientation.isLandscape {
                 TopCollection.isHidden = true
             }
         }
         else {
-            botPreview.image = UIImage(named: imageArray[indexPath.row])
+            botPreview.image = receivedItemsBots[indexPath.row].uimage
             if !UIApplication.shared.statusBarOrientation.isLandscape {
                 BotCollection.isHidden = true
             }
@@ -127,23 +135,39 @@ UICollectionViewDelegate {
     @IBOutlet var BotCollection: UICollectionView!
     @IBOutlet var botPreview: UIImageView!
     
-    fileprivate func apiSearch(_ apiClient: EBAYAPIClient, q: String) {
+    fileprivate func apiSearch(_ apiClient: EBAYAPIClient, q: String, selector: Bool, ind: Bool) {
         if reachability.connection != .none {
             apiClient.searchItem(q: q) { response in
                 switch response {
-                case .success(let dataContainer as Item):
-                    self.item = dataContainer
-                    if self.item?.categoryID == "15687" {
-                        if !self.receivedItemsTops.contains(where: {$0.itemID == self.item?.itemID}) {
-                            self.receivedItemsTops.append(self.item!)
-                            DispatchQueue.main.async {
-                                self.TopCollection.reloadSections(IndexSet(integer: 0))
+                case .success(let item as Item):
+                    //TopCollection is clicked
+                    if selector {
+                        //item is a top
+                        if item.categoryID == "15687" {
+                            //add item to collection
+                            if !self.receivedItemsTops.contains(where: {$0.itemID == item.itemID}) {
+                                self.receivedItemsTops.append(item)
+                                //reload collection
+                                DispatchQueue.main.async {
+                                    self.TopCollection.reloadSections(IndexSet(integer: 0))
+                                }
                             }
                         }
                     }
+                        //BotCollection is clicked
                     else {
+                        //item is a bot
+                        if item.categoryID == "185075" {
+                            //add item to collection
+                            if !self.receivedItemsBots.contains(where: {$0.itemID == item.itemID}) {
+                                self.receivedItemsBots.append(item)
+                                //reload collection
+                                DispatchQueue.main.async {
+                                    self.BotCollection.reloadSections(IndexSet(integer: 0))
+                                }
+                            }
+                        }
                     }
-                    
                 case .failure(let error as APIErrors):
                     let er = error.errors
                     if er != nil && er?.first != nil && er?.first?.longMessage != nil {
@@ -197,15 +221,20 @@ UICollectionViewDelegate {
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
+            var index = 0
+            var last = false
             for data in result as! [NSManagedObject] {
                 let str = data.value(forKey: "favourites") as! String
-                
+                index = index + 1
+                if index == result.count {
+                    last = true
+                }
                 if !self.apiClient.isTokenValid() {
                     try? apiClient.refreshToken() { response in
                         switch response {
                         case .success( _ as OauthResponse):
                             print("Token refreshed successfully")
-                            self.apiSearch(self.apiClient, q: str)
+                            self.apiSearch(self.apiClient, q: str, selector: sel, ind: last)
                         case .failure( _ as OauthError):
                             print("Token failed to refresh")
                         case .success(_):
@@ -216,7 +245,7 @@ UICollectionViewDelegate {
                     }
                 }
                 else {
-                    self.apiSearch(self.apiClient, q: str)
+                    self.apiSearch(self.apiClient, q: str, selector: sel, ind: last)
                 }
             }
         } catch {

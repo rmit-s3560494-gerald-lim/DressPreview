@@ -144,7 +144,13 @@ public class EBAYAPIClient {
                             print("Error ")
                             return
                         }
-                        cloths.itemSummaries![i].uimage = try? UIImage.init(withContentsOfUrl: url)!
+                        do {
+                            let imageData = try Data(contentsOf: url as URL)
+                            cloths.itemSummaries![i].uimage = UIImage(data: imageData)
+                        } catch {
+                            print("Unable to load data: \(error)")
+                        }
+//                        cloths.itemSummaries![i].uimage = try? UIImage.init(withContentsOfUrl: url)!
                     }
                     completion(.success(cloths))
                 } catch {
@@ -158,6 +164,10 @@ public class EBAYAPIClient {
             }
         }
         task.resume()
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func searchItem(q: String?, completion: @escaping (_ result: Result<Any>) -> Void) {
@@ -187,7 +197,19 @@ public class EBAYAPIClient {
                     guard let url = URL(string: (item.image?.imageURL)!) else {
                         return
                     }
-                    item.uimage = try? UIImage.init(withContentsOfUrl: url)!
+                    print("url :\(url)")
+                    do {
+                        let imageData = try Data.init(contentsOf: url)
+                        item.uimage = UIImage(data: imageData)
+                    } catch {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error", message: "Erreur dans le chargement de l'image", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                            alert.present(alert, animated: true)
+                        }
+                        print("Unable to load data: \(error)")
+                        return
+                    }
                     completion(.success(item))
                 } catch {
                     print(error)

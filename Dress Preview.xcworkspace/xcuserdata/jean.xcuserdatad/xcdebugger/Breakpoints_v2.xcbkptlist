@@ -10,13 +10,205 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dress Preview/Networking/EBAYAPIClient.swift"
-            timestampString = "560240635.988773"
+            timestampString = "560540769.170998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "searchItem(q:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dress Preview/Networking/EBAYAPIClient.swift"
+            timestampString = "560540769.171435"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "createUrlRequestSpecificItem(q:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dress Preview/Controller/PreviewController.swift"
+            timestampString = "560607670.797142"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dress Preview/Controller/PreviewController.swift"
+            timestampString = "560607670.7975219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "fetchFavSearch(sel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dress Preview/Networking/EBAYAPIClient.swift"
+            timestampString = "560540769.17186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "search(q:category:limit:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Dress_Preview.EBAYAPIClient.search(q: Swift.Optional&lt;Swift.String&gt;, category: Swift.String, limit: Swift.Optional&lt;Swift.String&gt;, completion: (Dress_Preview.EBAYAPIClient.Result&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Dress Preview"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jean/Documents/rmit_courses/ios%20prog/DressPreview/Dress%20Preview/Networking/EBAYAPIClient.swift"
+                  timestampString = "560534480.603086"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "2552">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Dress_Preview.EBAYAPIClient.search(q: Swift.Optional&lt;Swift.String&gt;, category: Swift.String, limit: Swift.Optional&lt;Swift.String&gt;, completion: (Dress_Preview.EBAYAPIClient.Result&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Dress Preview"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jean/Documents/rmit_courses/ios%20prog/DressPreview/Dress%20Preview/Networking/EBAYAPIClient.swift"
+                  timestampString = "560534480.611218"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "7858">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dress Preview/Networking/EBAYAPIClient.swift"
+            timestampString = "560540769.1721931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "searchItem(q:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Dress_Preview.EBAYAPIClient.searchItem(q: Swift.Optional&lt;Swift.String&gt;, completion: (Dress_Preview.EBAYAPIClient.Result&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Dress Preview"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jean/Documents/rmit_courses/ios%20prog/DressPreview/Dress%20Preview/Networking/EBAYAPIClient.swift"
+                  timestampString = "560534626.8234349"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "4673">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Dress_Preview.EBAYAPIClient.searchItem(q: Swift.Optional&lt;Swift.String&gt;, completion: (Dress_Preview.EBAYAPIClient.Result&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Dress Preview"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jean/Documents/rmit_courses/ios%20prog/DressPreview/Dress%20Preview/Networking/EBAYAPIClient.swift"
+                  timestampString = "560534626.825995"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "14823">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dress Preview/Networking/EBAYAPIClient.swift"
+            timestampString = "560540769.17251"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "search(q:category:limit:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Dress_Preview.EBAYAPIClient.search(q: Swift.Optional&lt;Swift.String&gt;, category: Swift.String, limit: Swift.Optional&lt;Swift.String&gt;, completion: (Dress_Preview.EBAYAPIClient.Result&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Dress Preview"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jean/Documents/rmit_courses/ios%20prog/DressPreview/Dress%20Preview/Networking/EBAYAPIClient.swift"
+                  timestampString = "560534473.965444"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "2131">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Dress_Preview.EBAYAPIClient.search(q: Swift.Optional&lt;Swift.String&gt;, category: Swift.String, limit: Swift.Optional&lt;Swift.String&gt;, completion: (Dress_Preview.EBAYAPIClient.Result&lt;Any&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Dress Preview"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jean/Documents/rmit_courses/ios%20prog/DressPreview/Dress%20Preview/Networking/EBAYAPIClient.swift"
+                  timestampString = "560534473.9676549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "7841">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
