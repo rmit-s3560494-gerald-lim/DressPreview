@@ -19,6 +19,16 @@ class DetailsViewController: UIViewController {
     var item: ItemSummary? = nil
     var trackingID: String = ""
     var isInFav = false
+    var isHidden = false
+    
+    // Action for tapping on Ebay Buy Image
+    @IBAction func ebayBuyTap(_ sender: Any) {
+        if(!(item == nil)) {
+            UIApplication.shared.open(URL(string: (item?.itemWebURL)!)!)
+        } else {
+            UIApplication.shared.open(URL(string: (favItem?.itemWebURL)!)!)
+        }
+    }
 
     override func viewDidLoad() {
         mainTitle.text = item?.title
@@ -69,12 +79,11 @@ class DetailsViewController: UIViewController {
         
     }
     
-    @IBAction func ebayBuyButtonPressed(_ sender: Any) {
-        UIApplication.shared.open(URL(string: (item?.itemWebURL)!)!)
-    }
-    
+    // Add to core data if user clicks Add to Favourites which is displayed when itemID is not in coredata
+    // else it will display remove from favourites meaning that the itemID is already in coredata thus user
+    // can choose to remove it form their favourites therefore from coredata
+    // Update button text in response to user actions.
     @IBAction func addToFavTapped(_ sender: Any) {
-        
         if(isInFav == false) {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
