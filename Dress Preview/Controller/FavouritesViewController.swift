@@ -11,7 +11,7 @@ import Disk
 import Reachability
 import CoreData
 
-class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate{
     
     var item: Item? = nil
     var receivedItems = [Item]()
@@ -41,6 +41,15 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         return cell
+    }
+    
+    // Passing selected cell struct to DetailsViewController as viewCont
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Register collectionView for force touching
+        let viewCont = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
+        viewCont?.favItem = (receivedItems[indexPath.row])
+        viewCont?.isHidden = true
+        self.navigationController?.pushViewController(viewCont!, animated: false)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -134,6 +143,18 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // Don't show navigation bar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    // Show navigation bar upon leaving view
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -164,7 +185,10 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.delegate = self
+        
         self.navBar.rightBarButtonItem = self.editButtonItem
+        
         
         self.loadingIndicator.stopAnimating()
         
@@ -208,6 +232,9 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
             CoreDataSearch()
         }
     }
+    
+    
+    
 }
 extension FavouritesViewController : ViewCellDelegate {
     func delete(cell: CollectionViewCell) {

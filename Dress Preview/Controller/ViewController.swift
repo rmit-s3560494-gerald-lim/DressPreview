@@ -212,7 +212,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // Don't show navigation bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

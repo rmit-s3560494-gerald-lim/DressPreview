@@ -15,17 +15,43 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var ebayBuy: UIImageView!
     
     var item: ItemSummary? = nil
+    var favItem: Item? = nil
     var trackingID: String = ""
     var isInFav = false
+    var isHidden = false
+    
+    @IBAction func ebayBuyTap(_ sender: Any) {
+        if(!(item == nil)) {
+            UIApplication.shared.open(URL(string: (item?.itemWebURL)!)!)
+        } else {
+            UIApplication.shared.open(URL(string: (favItem?.itemWebURL)!)!)
+        }
+    }
 
     override func viewDidLoad() {
-        mainTitle.text = item?.title
-        mainImage.image = item?.uimage
-        price.text = "$" + (item?.price?.value)!
-        trackingID = item?.itemID ?? ""
+        // Favourite button hiding switch
+        if isHidden {
+            favButton.isHidden = true
+        }
         
+        // Switch to see which controller accessed this scene
+        // item set from viewcontroller
+        // favItem set from favouritesviewcontroller
+        if(!(item == nil)) {
+            mainTitle.text = item?.title
+            mainImage.image = item?.uimage
+            price.text = "$" + (item?.price?.value)!
+            trackingID = item?.itemID ?? ""
+        } else {
+            mainTitle.text = favItem?.title
+            mainImage.image = favItem?.uimage
+            price.text = "$" + (favItem?.price?.value)!
+            trackingID = favItem?.itemID ?? ""
+        }
+    
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
@@ -67,10 +93,6 @@ class DetailsViewController: UIViewController {
         }
         return [favouriteAction]
         
-    }
-    
-    @IBAction func ebayBuyButtonPressed(_ sender: Any) {
-        UIApplication.shared.open(URL(string: (item?.itemWebURL)!)!)
     }
     
     @IBAction func addToFavTapped(_ sender: Any) {
