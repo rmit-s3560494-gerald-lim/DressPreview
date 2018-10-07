@@ -13,7 +13,10 @@ import CoreData
 
 class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate{
     
+    // Varible for placeholder of type Item
     var item: Item? = nil
+    
+    // Varible to store array of items received from API call
     var receivedItems = [Item]()
     
     let reachability = Reachability()!
@@ -23,11 +26,12 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var viewCollection: UICollectionView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    // Number of cells in collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
         return (receivedItems.count)
     }
     
+    // Populating each cell with items inside receivedItems array
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! CollectionViewCell
@@ -43,15 +47,17 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
     
-    // Passing selected cell struct to DetailsViewController as viewCont
+    // Passing selected cell details to DetailsViewController as viewCont
+    // FavItem is of type Item in the current cell selected that is passed to DetailsViewController
+    // IsHidden is a varible used to switch DetailsViewController to hide the Add to Favourites button
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Register collectionView for force touching
         let viewCont = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
         viewCont?.favItem = (receivedItems[indexPath.row])
         viewCont?.isHidden = true
         self.navigationController?.pushViewController(viewCont!, animated: false)
     }
     
+    // Sets editing on the cell meaning it is now able to be deleted
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
 
@@ -64,6 +70,7 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // Checks type of internet connection or if none
     @objc func reachabilityChanged(note: Notification) {
         
         let reachability = note.object as! Reachability
@@ -83,6 +90,10 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // Function to check internet connection and if active call searchitem function from EBAYAPICLIENT
+    // with parameter q which is the itemID (type String).
+    // If response successful then Item is appended to receivedItems array.
+    // Else appropriate fail cases are run
     fileprivate func apiSearch(_ apiClient: EBAYAPIClient, q: String) {
         DispatchQueue.main.async {
             self.loadingIndicator.startAnimating()
@@ -125,6 +136,8 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // Function to search coredata and retrive all the ItemID (ID of items user favrourited) that are stored.
+    // For each ItemID an call the apiSearch function in self.
     fileprivate func CoreDataSearch() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -143,29 +156,25 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    // Don't show navigation bar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    // Show navigation bar upon leaving view
+    // Set to show navigation bar upon leaving self
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    // Make sure that if coredata contains any itemIDs that are not present
+    // in receivedItems array then call the apiSearch in self to fix this.
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        receivedItems.removeAll()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        
         do{
             let results = try context.fetch(request)
             for result in results as! [NSManagedObject]
             {
                 let resultString = result.value(forKey: "favourites") as! String
-                
                 if !receivedItems.contains(where: {$0.itemID == resultString}) {
                     self.apiSearch(self.apiClient, q: resultString)
                 }
@@ -174,25 +183,22 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         } catch {
             print("Failed")
         }
-        
         DispatchQueue.main.async {
             self.viewCollection.reloadData();
         }
-        
         super.viewWillAppear(animated)
     }
     
+    // Checks if token for API is retreived from .caches folder on phone and also verified
+    // If error then fail measures are taken.
+    // If success then coredatasearch in self is called.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.delegate = self
-        
+
         self.navBar.rightBarButtonItem = self.editButtonItem
-        
         
         self.loadingIndicator.stopAnimating()
         
-        // Check connection to internet through wifi or 4g otherwise print error
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi {
                 print("Connected to wifi")
@@ -232,10 +238,9 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
             CoreDataSearch()
         }
     }
-    
-    
-    
 }
+// Extension for delete functionality of cells
+// Protocol adopted from CollectionViewCell
 extension FavouritesViewController : ViewCellDelegate {
     func delete(cell: CollectionViewCell) {
         if let indexPath = viewCollection?.indexPath(for: cell) {
