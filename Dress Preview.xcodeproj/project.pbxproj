@@ -23,6 +23,8 @@
 		7439A86F212131BF00CCEE29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7439A86E212131BF00CCEE29 /* Assets.xcassets */; };
 		7439A872212131BF00CCEE29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7439A870212131BF00CCEE29 /* LaunchScreen.storyboard */; };
 		748972B9214F58480077FFCB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748972B8214F58480077FFCB /* SettingsController.swift */; };
+		74930D6921672F6800133272 /* ImportFavouritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74930D6821672F6800133272 /* ImportFavouritesController.swift */; };
+		74930D6B21686EED00133272 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74930D6A21686EED00133272 /* Favourites.swift */; };
 		74C527B1216300AE009AA2A0 /* Dress_Preview_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C527B0216300AE009AA2A0 /* Dress_Preview_UITests.swift */; };
 		74C527BF216300D6009AA2A0 /* Dress_Preview_UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C527BE216300D6009AA2A0 /* Dress_Preview_UnitTests.swift */; };
 		84550A66AC37B969257BCDA9 /* Pods_Dress_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBABEEFF3A86B3B7C9EAE723 /* Pods_Dress_Preview.framework */; };
@@ -69,6 +71,8 @@
 		7439A871212131BF00CCEE29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7439A873212131BF00CCEE29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		748972B8214F58480077FFCB /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		74930D6821672F6800133272 /* ImportFavouritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFavouritesController.swift; sourceTree = "<group>"; };
+		74930D6A21686EED00133272 /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		74C527AE216300AE009AA2A0 /* Dress Preview UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dress Preview UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C527B0216300AE009AA2A0 /* Dress_Preview_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dress_Preview_UITests.swift; sourceTree = "<group>"; };
 		74C527B2216300AE009AA2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				0F42826F2150E7A3001DAC82 /* OauthToken.swift */,
 				0F42827121510717001DAC82 /* OauthResponse.swift */,
 				C7099C612155A5F300BBB670 /* Item.swift */,
+				74930D6A21686EED00133272 /* Favourites.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 				C7D8A1EE214F32A200F0F8A1 /* DetailsViewController.swift */,
 				C7099C632155AA0B00BBB670 /* FavouritesViewController.swift */,
 				0F630B4321571E380009BE64 /* PreviewController.swift */,
+				74930D6821672F6800133272 /* ImportFavouritesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -398,7 +404,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
@@ -409,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -426,6 +432,7 @@
 				C7099C642155AA0B00BBB670 /* FavouritesViewController.swift in Sources */,
 				0F7AF942214B7B880082AE19 /* Cloth.swift in Sources */,
 				C7099C622155A5F300BBB670 /* Item.swift in Sources */,
+				74930D6B21686EED00133272 /* Favourites.swift in Sources */,
 				7439A86A212131BD00CCEE29 /* ViewController.swift in Sources */,
 				0F42826E2150C4ED001DAC82 /* ErrorResponse.swift in Sources */,
 				7439A868212131BD00CCEE29 /* AppDelegate.swift in Sources */,
@@ -434,6 +441,7 @@
 				C794CAD72154B1A300675FFE /* user.xcdatamodeld in Sources */,
 				C7D8A1EF214F32A200F0F8A1 /* DetailsViewController.swift in Sources */,
 				0F42827221510717001DAC82 /* OauthResponse.swift in Sources */,
+				74930D6921672F6800133272 /* ImportFavouritesController.swift in Sources */,
 				0FA6170D21479322003333C2 /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,11 +616,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SEE6E4PE7K;
+				DEVELOPMENT_TEAM = JUJ39QHB5K;
 				INFOPLIST_FILE = "Dress Preview/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dp.Dress-Previe";
+				PRODUCT_BUNDLE_IDENTIFIER = "dp.Dress-Preview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -625,11 +633,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SEE6E4PE7K;
+				DEVELOPMENT_TEAM = JUJ39QHB5K;
 				INFOPLIST_FILE = "Dress Preview/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "dp.Dress-Previe";
+				PRODUCT_BUNDLE_IDENTIFIER = "dp.Dress-Preview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
