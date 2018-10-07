@@ -32,6 +32,7 @@
 		C76E1AC5212A630700E4DF00 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C76E1AC4212A630600E4DF00 /* Default-568h@2x.png */; };
 		C794CAD72154B1A300675FFE /* user.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C794CAD52154B1A300675FFE /* user.xcdatamodeld */; };
 		C7D8A1EF214F32A200F0F8A1 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D8A1EE214F32A200F0F8A1 /* DetailsViewController.swift */; };
+		C7E876F12168287D009FDE79 /* PreviewClothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E876F02168287D009FDE79 /* PreviewClothing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		C794CADC2154B33E00675FFE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C794CADD2154B33E00675FFE /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C7D8A1EE214F32A200F0F8A1 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		C7E876F02168287D009FDE79 /* PreviewClothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewClothing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				0F42826F2150E7A3001DAC82 /* OauthToken.swift */,
 				0F42827121510717001DAC82 /* OauthResponse.swift */,
 				C7099C612155A5F300BBB670 /* Item.swift */,
+				C7E876F02168287D009FDE79 /* PreviewClothing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -401,7 +404,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
@@ -412,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dress Preview/Pods-Dress Preview-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -433,6 +436,7 @@
 				0F42826E2150C4ED001DAC82 /* ErrorResponse.swift in Sources */,
 				7439A868212131BD00CCEE29 /* AppDelegate.swift in Sources */,
 				0F7AF955214B7BC70082AE19 /* (null) in Sources */,
+				C7E876F12168287D009FDE79 /* PreviewClothing.swift in Sources */,
 				0F4282702150E7A3001DAC82 /* OauthToken.swift in Sources */,
 				C794CAD72154B1A300675FFE /* user.xcdatamodeld in Sources */,
 				C7D8A1EF214F32A200F0F8A1 /* DetailsViewController.swift in Sources */,
