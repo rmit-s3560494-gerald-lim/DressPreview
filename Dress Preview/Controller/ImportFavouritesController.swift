@@ -14,12 +14,27 @@ class ImportFavouritesController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var nameFav: UITextField!
     
     // Connect to Favourites Model
-//    var favourites = Favourites.init(images: <#T##[Image]?#>, names: <#T##[String]?#>)
+    var addItem = Favourites()
+    
+    struct favItem {
+        var imageArray = [UIImage]()
+        var nameArray = [String]()
+    }
+    
     // TODO: save images to UIIMage array?
     // Save images with name
+//    var addItem = favItem()
     @IBOutlet weak var saveNow: UIBarButtonItem!
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var namingFav: UITextField!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(addItem.images.count)
+        if(namingFav.text?.isEmpty == false && myImageView.image != nil)
+        {
+            self.saveNow.isEnabled = true
+        }
+    }
     
     override func viewDidLoad() {
         
@@ -27,11 +42,19 @@ class ImportFavouritesController: UIViewController, UINavigationControllerDelega
         // disables save function until conditions are met
         self.saveNow.isEnabled = false
         
-        
-//        newFav.append(imageToAdd)
-//        newFavName.append(imageName)
-        
     }
+    
+    @IBAction func uponSave(_ sender: Any) {
+        // send struct to favourites
+        if(namingFav.text?.isEmpty == true) {
+            let alert  = UIAlertController(title: "Warning", message: "No image name entered", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        }
+        addItem.images.append(myImageView.image!)
+        addItem.imageNames.append(namingFav.text!)
+    }
+    
+    
     //MARK:- Image Picker
     @IBAction func imagePickerBtnAction(selectedButton: UIButton)
     {

@@ -13,6 +13,8 @@ import CoreData
 
 class FavouritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let test = Favourites()
+    
     var item: Item? = nil
     var receivedItems = [Item]()
     
@@ -138,6 +140,11 @@ class FavouritesViewController: UIViewController, UICollectionViewDataSource, UI
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+//        FavouritesViewController.reloadData()
+        
+        print("testing import")
+        print(test.imageNames.count)
         
         do{
             let results = try context.fetch(request)

@@ -229,7 +229,12 @@
                                                 <segue destination="iLT-sk-Ahs" kind="unwind" unwindAction="unwindToFavouritesViewController:" id="NCd-py-dd9"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6zD-J7-XYd"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="6zD-J7-XYd">
+                                            <connections>
+                                                <action selector="uponSave:" destination="gk7-lP-6cQ" id="Zcc-72-afi"/>
+                                                <segue destination="iLT-sk-Ahs" kind="unwind" unwindAction="unwindToFavouritesViewController:" id="wbb-yf-V5D"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -282,8 +287,12 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKA-bd-lrA">
                                 <rect key="frame" x="0.0" y="20" width="414" height="96"/>
                                 <items>
-                                    <navigationItem largeTitleDisplayMode="always" id="nxR-iz-IRi">
-                                        <nil key="title"/>
+                                    <navigationItem title="Favourites" largeTitleDisplayMode="always" id="nxR-iz-IRi">
+                                        <barButtonItem key="leftBarButtonItem" title="Import" id="7m7-Hp-Hf1">
+                                            <connections>
+                                                <segue destination="gk7-lP-6cQ" kind="presentation" id="9WI-RY-LdP"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -368,14 +377,6 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rtA-UO-dma">
                                 <rect key="frame" x="197" y="337.33333333333331" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uci-vh-srX">
-                                <rect key="frame" x="156" y="637" width="102" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Import Clothes"/>
-                                <connections>
-                                    <segue destination="gk7-lP-6cQ" kind="presentation" id="OWf-g4-2vH"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

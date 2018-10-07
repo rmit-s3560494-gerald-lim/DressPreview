@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Favourites: Codable {
-    var images: [Image]?
-    var names: [String]?
+struct Favourites{
+    var imageNames: [String] = []
+    var images: [UIImage] = []
 }
